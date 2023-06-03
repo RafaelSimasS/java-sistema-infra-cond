@@ -32,7 +32,7 @@ public class frmLogin extends javax.swing.JFrame {
         adminPadrao = new Adm("a", "a");
     }
         private void exibirImagem() {
-        ImageIcon originalIcon = new ImageIcon(getClass().getResource("./telacondominio/icon.png")); // Substitua pelo caminho correto da imagem
+        ImageIcon originalIcon = new ImageIcon(getClass().getResource("icon.png")); // Substitua pelo caminho correto da imagem
         
         // Obter as dimensões originais da imagem
         int originalWidth = originalIcon.getIconWidth();
@@ -267,7 +267,6 @@ public class frmLogin extends javax.swing.JFrame {
             // criar admin padrão
             ListaAdministradores listaAdministradores = new ListaAdministradores();
             listaAdministradores.adicionarAdministrador(new frmLogin().adminPadrao);
-            System.out.println("Sou gostoso");
             new frmLogin().setVisible(true);
             
         });

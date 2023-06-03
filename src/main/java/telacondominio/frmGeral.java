@@ -26,7 +26,16 @@ public class frmGeral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dpnTelas = new javax.swing.JDesktopPane();
+        pnCadastro = new javax.swing.JPanel();
+        pnInicio = new javax.swing.JPanel();
+        pnCadastroMorador = new javax.swing.JPanel();
+        pnCadastroAdm = new javax.swing.JPanel();
+        lblUsuario = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        pasSenha = new javax.swing.JPasswordField();
+        btnCriar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         menubarMenu = new javax.swing.JMenuBar();
         mCadastros = new javax.swing.JMenu();
         mmCadastroMorador = new javax.swing.JMenuItem();
@@ -37,16 +46,88 @@ public class frmGeral extends javax.swing.JFrame {
         setTitle("Menu");
         setResizable(false);
 
-        javax.swing.GroupLayout dpnTelasLayout = new javax.swing.GroupLayout(dpnTelas);
-        dpnTelas.setLayout(dpnTelasLayout);
-        dpnTelasLayout.setHorizontalGroup(
-            dpnTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnCadastro.setLayout(new java.awt.CardLayout());
+
+        pnInicio.setBackground(new java.awt.Color(102, 102, 102));
+
+        javax.swing.GroupLayout pnInicioLayout = new javax.swing.GroupLayout(pnInicio);
+        pnInicio.setLayout(pnInicioLayout);
+        pnInicioLayout.setHorizontalGroup(
+            pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 521, Short.MAX_VALUE)
         );
-        dpnTelasLayout.setVerticalGroup(
-            dpnTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+        pnInicioLayout.setVerticalGroup(
+            pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
         );
+
+        pnCadastro.add(pnInicio, "telaAdm");
+
+        javax.swing.GroupLayout pnCadastroMoradorLayout = new javax.swing.GroupLayout(pnCadastroMorador);
+        pnCadastroMorador.setLayout(pnCadastroMoradorLayout);
+        pnCadastroMoradorLayout.setHorizontalGroup(
+            pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 521, Short.MAX_VALUE)
+        );
+        pnCadastroMoradorLayout.setVerticalGroup(
+            pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 347, Short.MAX_VALUE)
+        );
+
+        pnCadastro.add(pnCadastroMorador, "telaMorador");
+
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblUsuario.setText("Usuário: ");
+
+        lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSenha.setText("Senha:");
+
+        btnCriar.setText("Criar");
+        btnCriar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+
+        javax.swing.GroupLayout pnCadastroAdmLayout = new javax.swing.GroupLayout(pnCadastroAdm);
+        pnCadastroAdm.setLayout(pnCadastroAdmLayout);
+        pnCadastroAdmLayout.setHorizontalGroup(
+            pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+                .addGap(117, 117, 117)
+                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+                        .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUsuario)
+                            .addComponent(lblSenha))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUsuario)
+                            .addComponent(pasSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)))
+                    .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(130, Short.MAX_VALUE))
+        );
+        pnCadastroAdmLayout.setVerticalGroup(
+            pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCriar)
+                    .addComponent(btnCancelar))
+                .addContainerGap(133, Short.MAX_VALUE))
+        );
+
+        pnCadastro.add(pnCadastroAdm, "card4");
 
         mCadastros.setText("Cadastro");
 
@@ -61,6 +142,11 @@ public class frmGeral extends javax.swing.JFrame {
 
         mmAdministrador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mmAdministrador.setText("Administrador");
+        mmAdministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmAdministradorActionPerformed(evt);
+            }
+        });
         mCadastros.add(mmAdministrador);
 
         menubarMenu.add(mCadastros);
@@ -87,11 +173,11 @@ public class frmGeral extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dpnTelas, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(pnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dpnTelas, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(pnCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -99,18 +185,17 @@ public class frmGeral extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mmCadastroMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroMoradorActionPerformed
-        // TODO add your handling code here:
-        dpnTelas.removeAll();
-        ifrmCadastroAdm frameAdm = new ifrmCadastroAdm();
-        dpnTelas.add(frameAdm).setVisible(true);
+        pnCadastro.removeAll();
+        pnCadastro.add(pnCadastroMorador);
+        pnCadastro.repaint();
+        pnCadastro.revalidate();
     }//GEN-LAST:event_mmCadastroMoradorActionPerformed
-
+    
     private void mSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSairActionPerformed
         
     }//GEN-LAST:event_mSairActionPerformed
 
     private void mSairMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSairMouseReleased
-        // TODO add your handling code here:
         // TODO add your handling code here:
         
     }//GEN-LAST:event_mSairMouseReleased
@@ -121,6 +206,16 @@ public class frmGeral extends javax.swing.JFrame {
         frameLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_mSairMouseClicked
+
+    private void mmAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmAdministradorActionPerformed
+        // TODO add your handling code here:
+        pnCadastro.removeAll();
+        pnCadastro.add(pnCadastroAdm);
+        pnCadastro.repaint();
+        pnCadastro.revalidate();
+        
+        
+    }//GEN-LAST:event_mmAdministradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,11 +253,28 @@ public class frmGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane dpnTelas;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCriar;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu mCadastros;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuBar menubarMenu;
     private javax.swing.JMenuItem mmAdministrador;
     private javax.swing.JMenuItem mmCadastroMorador;
+    private javax.swing.JPasswordField pasSenha;
+    private javax.swing.JPanel pnCadastro;
+    private javax.swing.JPanel pnCadastroAdm;
+    private javax.swing.JPanel pnCadastroMorador;
+    private javax.swing.JPanel pnInicio;
+    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtUsuario1;
+    private javax.swing.JTextField txtUsuario2;
+    private javax.swing.JTextField txtUsuario3;
+    private javax.swing.JTextField txtUsuario4;
+    private javax.swing.JTextField txtUsuario5;
+    private javax.swing.JTextField txtUsuario6;
+    private javax.swing.JTextField txtUsuario7;
+    private javax.swing.JTextField txtUsuario8;
     // End of variables declaration//GEN-END:variables
 }
