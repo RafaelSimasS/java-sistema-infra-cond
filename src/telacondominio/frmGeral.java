@@ -6,7 +6,7 @@ package telacondominio;
 
 /**
  *
- * @author Sparq
+ * @author leafar
  */
 public class frmGeral extends javax.swing.JFrame {
 
@@ -26,12 +26,27 @@ public class frmGeral extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dpnTelas = new javax.swing.JDesktopPane();
         menubarMenu = new javax.swing.JMenuBar();
         mCadastros = new javax.swing.JMenu();
         mmCadastroMorador = new javax.swing.JMenuItem();
+        mmAdministrador = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
+        setResizable(false);
+
+        javax.swing.GroupLayout dpnTelasLayout = new javax.swing.GroupLayout(dpnTelas);
+        dpnTelas.setLayout(dpnTelasLayout);
+        dpnTelasLayout.setHorizontalGroup(
+            dpnTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 521, Short.MAX_VALUE)
+        );
+        dpnTelasLayout.setVerticalGroup(
+            dpnTelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
 
         mCadastros.setText("Cadastro");
 
@@ -43,6 +58,10 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
         mCadastros.add(mmCadastroMorador);
+
+        mmAdministrador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmAdministrador.setText("Administrador");
+        mCadastros.add(mmAdministrador);
 
         menubarMenu.add(mCadastros);
 
@@ -68,11 +87,11 @@ public class frmGeral extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addComponent(dpnTelas, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addComponent(dpnTelas, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -81,6 +100,9 @@ public class frmGeral extends javax.swing.JFrame {
 
     private void mmCadastroMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroMoradorActionPerformed
         // TODO add your handling code here:
+        dpnTelas.removeAll();
+        ifrmCadastroAdm frameAdm = new ifrmCadastroAdm();
+        dpnTelas.add(frameAdm).setVisible(true);
     }//GEN-LAST:event_mmCadastroMoradorActionPerformed
 
     private void mSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSairActionPerformed
@@ -136,9 +158,11 @@ public class frmGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane dpnTelas;
     private javax.swing.JMenu mCadastros;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuBar menubarMenu;
+    private javax.swing.JMenuItem mmAdministrador;
     private javax.swing.JMenuItem mmCadastroMorador;
     // End of variables declaration//GEN-END:variables
 }

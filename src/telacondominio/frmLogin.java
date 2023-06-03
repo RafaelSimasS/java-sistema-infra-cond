@@ -22,11 +22,13 @@ public class frmLogin extends javax.swing.JFrame {
     /**
      * Creates new form frmLogin
      */
+    // cria uma variável do tipo Adm para criar um novo administrador
     private Adm adminPadrao;
     
     public frmLogin() {
         initComponents();
         exibirImagem();
+        // CRIA INSTÂNCIA DA CLASSE ADM PARA CRIAR UM ADM PADRÃO
         adminPadrao = new Adm("a", "a");
     }
         private void exibirImagem() {
@@ -206,8 +208,10 @@ public class frmLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuarioDigitado = txtUsuario.getText();
         String senhaDigitada = new String(pasSenha.getPassword());
+        
         List<Adm> administradores = new ListaAdministradores().getAdministradores();
         boolean credenciaisCorretas = false;
+        
         // itera sobre a lista de adms buscando algum que seja igual as credenciais informadas
         for (Adm administrador : administradores) {
             if (administrador.getUsuario().equals(usuarioDigitado) && administrador.getSenha().equals(senhaDigitada)) {
