@@ -27,7 +27,7 @@ public class frmLogin extends javax.swing.JFrame {
     public frmLogin() {
         initComponents();
         exibirImagem();
-        adminPadrao = new Adm("admin", "123");
+        adminPadrao = new Adm("a", "a");
     }
         private void exibirImagem() {
         ImageIcon originalIcon = new ImageIcon(getClass().getResource("/telacondominio/icon.png")); // Substitua pelo caminho correto da imagem
@@ -208,6 +208,7 @@ public class frmLogin extends javax.swing.JFrame {
         String senhaDigitada = new String(pasSenha.getPassword());
         List<Adm> administradores = new ListaAdministradores().getAdministradores();
         boolean credenciaisCorretas = false;
+        // itera sobre a lista de adms buscando algum que seja igual as credenciais informadas
         for (Adm administrador : administradores) {
             if (administrador.getUsuario().equals(usuarioDigitado) && administrador.getSenha().equals(senhaDigitada)) {
                 credenciaisCorretas = true;
@@ -215,6 +216,10 @@ public class frmLogin extends javax.swing.JFrame {
             }
         }
         if (credenciaisCorretas) {
+            frmGeral frameGeral = new frmGeral();
+            frameGeral.setVisible(true);
+            
+            this.dispose();
             // Credenciais corretas, faça algo aqui, por exemplo, abrir uma nova janela
         } else {
         JOptionPane.showMessageDialog(null, "Usuário ou Senha incorreta", "Erro de Login", JOptionPane.ERROR_MESSAGE);
@@ -222,14 +227,7 @@ public class frmLogin extends javax.swing.JFrame {
             pasSenha.setText("");
             txtUsuario.requestFocus();
         }
-//        if(txtUsuario.getText().equals(a1.getUsuario())== false || new String(pasSenha.getPassword()).equals(a1.getSenha()) == false){
-//            JOptionPane.showMessageDialog(null,"Usuário ou Senha incorreta","Erro de Login", JOptionPane.ERROR_MESSAGE);
-//            txtUsuario.setText("");
-//            pasSenha.setText("");
-//            txtUsuario.requestFocus();
-//        }else{
-//            
-//        }
+
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
