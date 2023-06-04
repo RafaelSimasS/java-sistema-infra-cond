@@ -62,7 +62,9 @@ public class frmGeral extends javax.swing.JFrame {
         pasSenha = new javax.swing.JPasswordField();
         btnCriar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblCadastroAdiministrador = new javax.swing.JLabel();
         menubarMenu = new javax.swing.JMenuBar();
+        mInicio = new javax.swing.JMenu();
         mCadastros = new javax.swing.JMenu();
         mmCadastroMorador = new javax.swing.JMenuItem();
         mmCadastroAdministrador = new javax.swing.JMenuItem();
@@ -227,6 +229,9 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
+        lblCadastroAdiministrador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCadastroAdiministrador.setText("Cadastro de Adiministrador");
+
         javax.swing.GroupLayout pnCadastroAdmLayout = new javax.swing.GroupLayout(pnCadastroAdm);
         pnCadastroAdm.setLayout(pnCadastroAdmLayout);
         pnCadastroAdmLayout.setHorizontalGroup(
@@ -247,11 +252,17 @@ public class frmGeral extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(218, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroAdmLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCadastroAdiministrador)
+                .addGap(202, 202, 202))
         );
         pnCadastroAdmLayout.setVerticalGroup(
             pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastroAdmLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(26, 26, 26)
+                .addComponent(lblCadastroAdiministrador)
+                .addGap(18, 18, 18)
                 .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUsuario)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -263,10 +274,18 @@ public class frmGeral extends javax.swing.JFrame {
                 .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCriar)
                     .addComponent(btnCancelar))
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroAdm, "card4");
+
+        mInicio.setText("Início");
+        mInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mInicioMouseClicked(evt);
+            }
+        });
+        menubarMenu.add(mInicio);
 
         mCadastros.setBackground(new java.awt.Color(224, 223, 246));
         mCadastros.setBorder(mSair.getBorder());
@@ -321,33 +340,24 @@ public class frmGeral extends javax.swing.JFrame {
         // checa se o campo em questão comecça com o caractere espaço em branco ou se está vazio
         return campo.equals("") || campo.startsWith(" ");
     }
-    private int checarLimpoMorador(){
+    private boolean checarLimpoMorador(){
         // Checa se os campos da tela de cadastro de moradores estão limpos
         String nome = txtNome.getText();
         String cpf = txtCPF.getText();
         String telefone = txtTelefone.getText();
-        if(checarCampoVazioOuInvalido(cpf) &&
-           checarCampoVazioOuInvalido(nome) && 
-           checarCampoVazioOuInvalido(telefone))
-        {
-            return 1;
-        }else{
-            return 0;
-        }
+        return checarCampoVazioOuInvalido(cpf) &&
+                checarCampoVazioOuInvalido(nome) &&
+                checarCampoVazioOuInvalido(telefone);
     }
-    private int checarLimpoAdm(){
+    private boolean checarLimpoAdm(){
         // Checa se os campos Usuario e Senha da Tela de cadastro de Admins estão limpos
         String nome = txtUsuario.getText();
         String password = new String(pasSenha.getPassword());
-        if(checarCampoVazioOuInvalido(password) && checarCampoVazioOuInvalido(nome)){
-            return 1;
-        }else{
-            return 0;
-        }
+        return checarCampoVazioOuInvalido(password) && checarCampoVazioOuInvalido(nome);
     }
     
     private void mmCadastroMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroMoradorActionPerformed
-        if( checarLimpoAdm()== 1){
+        if( checarLimpoAdm()){
             pnCadastro.removeAll();
             pnCadastro.add(pnCadastroMorador);
             pnCadastro.repaint();
@@ -370,7 +380,7 @@ public class frmGeral extends javax.swing.JFrame {
     
     private void mmCadastroAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroAdministradorActionPerformed
         // TODO add your handling code here:
-        if( checarLimpoMorador()== 1){
+        if( checarLimpoMorador()){
             pnCadastro.removeAll();
             pnCadastro.add(pnCadastroAdm);
             pnCadastro.repaint();
@@ -432,9 +442,37 @@ public class frmGeral extends javax.swing.JFrame {
 
     private void mSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mSairMouseClicked
         // TODO add your handling code here:
-        frmLogin frameLogin = new frmLogin();
-        frameLogin.setVisible(true);
-        this.dispose();
+        if(!checarLimpoAdm()){
+            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
+                    "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                txtUsuario.setText("");
+                pasSenha.setText("");
+                frmLogin frameLogin = new frmLogin();
+                frameLogin.setVisible(true);
+                this.dispose();
+            }else{
+                txtUsuario.requestFocus();
+            }
+            
+        }else if (!checarLimpoMorador()){
+            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
+                    "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                txtNome.setText("");
+                txtCPF.setText("");
+                txtTelefone.setText("");
+                frmLogin frameLogin = new frmLogin();
+                frameLogin.setVisible(true);
+                this.dispose();
+            }else{
+                txtNome.requestFocus();
+            }
+        }else{
+            frmLogin frameLogin = new frmLogin();
+            frameLogin.setVisible(true);
+            this.dispose(); 
+        }
     }//GEN-LAST:event_mSairMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -516,6 +554,44 @@ public class frmGeral extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCadastrarMoradorActionPerformed
 
+    private void mInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mInicioMouseClicked
+        // TODO add your handling code here:
+        if(!checarLimpoAdm()){
+            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
+                    "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                txtUsuario.setText("");
+                pasSenha.setText("");
+                pnCadastro.removeAll();
+                pnCadastro.add(pnInicio);
+                pnCadastro.repaint();
+                pnCadastro.revalidate();
+            }else{
+                txtUsuario.requestFocus();
+            }
+            
+        }else if (!checarLimpoMorador()){
+            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
+                    "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                txtNome.setText("");
+                txtCPF.setText("");
+                txtTelefone.setText("");
+                pnCadastro.removeAll();
+                pnCadastro.add(pnInicio);
+                pnCadastro.repaint();
+                pnCadastro.revalidate();
+            }else{
+                txtNome.requestFocus();
+            }
+        }else{
+            pnCadastro.removeAll();
+            pnCadastro.add(pnInicio);
+            pnCadastro.repaint();
+            pnCadastro.revalidate();  
+        }
+    }//GEN-LAST:event_mInicioMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -560,6 +636,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JLabel lblApartamento;
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCadastroAdiministrador;
     private javax.swing.JLabel lblCadastroMorador;
     private javax.swing.JLabel lblIconBemVindo;
     private javax.swing.JLabel lblNome;
@@ -567,6 +644,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu mCadastros;
+    private javax.swing.JMenu mInicio;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuBar menubarMenu;
     private javax.swing.JMenuItem mmCadastroAdministrador;

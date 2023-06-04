@@ -13,8 +13,6 @@ import java.util.List;
  */
 public class ListaMoradores {
     private static List<Morador> moradores = new ArrayList<>();
-    
-
     public boolean adicionarMorador(Morador morador) {
         if(!existeMorador(morador)){
             moradores.add(morador);
