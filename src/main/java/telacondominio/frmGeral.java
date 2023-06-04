@@ -10,8 +10,11 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
 import morador.Morador;
 import morador.ListaMoradores;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -63,11 +66,14 @@ public class frmGeral extends javax.swing.JFrame {
         btnCriar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCadastroAdiministrador = new javax.swing.JLabel();
+        pnCadastroInfração = new javax.swing.JPanel();
+        cbMoradores = new javax.swing.JComboBox<>();
         menubarMenu = new javax.swing.JMenuBar();
         mInicio = new javax.swing.JMenu();
         mCadastros = new javax.swing.JMenu();
         mmCadastroMorador = new javax.swing.JMenuItem();
         mmCadastroAdministrador = new javax.swing.JMenuItem();
+        mGereInfra = new javax.swing.JMenu();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -279,6 +285,31 @@ public class frmGeral extends javax.swing.JFrame {
 
         pnCadastro.add(pnCadastroAdm, "card4");
 
+        cbMoradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMoradoresActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnCadastroInfraçãoLayout = new javax.swing.GroupLayout(pnCadastroInfração);
+        pnCadastroInfração.setLayout(pnCadastroInfraçãoLayout);
+        pnCadastroInfraçãoLayout.setHorizontalGroup(
+            pnCadastroInfraçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroInfraçãoLayout.createSequentialGroup()
+                .addContainerGap(486, Short.MAX_VALUE)
+                .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65))
+        );
+        pnCadastroInfraçãoLayout.setVerticalGroup(
+            pnCadastroInfraçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnCadastroInfraçãoLayout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(248, Short.MAX_VALUE))
+        );
+
+        pnCadastro.add(pnCadastroInfração, "card5");
+
         mInicio.setText("Início");
         mInicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,6 +341,14 @@ public class frmGeral extends javax.swing.JFrame {
         mCadastros.add(mmCadastroAdministrador);
 
         menubarMenu.add(mCadastros);
+
+        mGereInfra.setText("Gerenciamento de Infrações");
+        mGereInfra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mGereInfraMouseClicked(evt);
+            }
+        });
+        menubarMenu.add(mGereInfra);
 
         mSair.setText("Sair");
         mSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -592,6 +631,30 @@ public class frmGeral extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mInicioMouseClicked
 
+    private void cbMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMoradoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMoradoresActionPerformed
+
+    private void mGereInfraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mGereInfraMouseClicked
+        // TODO add your handling code here:
+        if(checarLimpoAdm() && checarLimpoMorador()){
+            ListaMoradores listaMoradores = new ListaMoradores();
+
+            List<Morador> moradores = listaMoradores.getMoradores();
+            DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+            for (Morador morador : moradores){
+                comboBoxModel.addElement(morador.getNome());
+            }
+            cbMoradores.setModel(comboBoxModel);
+            pnCadastro.removeAll();
+            pnCadastro.add(pnCadastroInfração);
+            pnCadastro.repaint();
+            pnCadastro.revalidate(); 
+            
+        }
+        
+    }//GEN-LAST:event_mGereInfraMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -633,6 +696,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JButton btnCriar;
     private javax.swing.JComboBox<String> cbApartamento;
     private javax.swing.JComboBox<String> cbBloco;
+    private javax.swing.JComboBox<String> cbMoradores;
     private javax.swing.JLabel lblApartamento;
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblCPF;
@@ -644,6 +708,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenu mCadastros;
+    private javax.swing.JMenu mGereInfra;
     private javax.swing.JMenu mInicio;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuBar menubarMenu;
@@ -652,6 +717,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JPasswordField pasSenha;
     private javax.swing.JPanel pnCadastro;
     private javax.swing.JPanel pnCadastroAdm;
+    private javax.swing.JPanel pnCadastroInfração;
     private javax.swing.JPanel pnCadastroMorador;
     private javax.swing.JPanel pnInicio;
     private javax.swing.JTextField txtCPF;

@@ -22,7 +22,7 @@ public class ListaMoradores {
         }
     }
 
-    public List<Morador> getAdministradores() {
+    public List<Morador> getMoradores() {
         return moradores;
     }
     private boolean existeMorador(Morador morador){
