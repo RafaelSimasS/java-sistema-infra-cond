@@ -4,21 +4,16 @@
  */
 package administacao;
 
-import telacondominio.Pessoa;
 
 /**
  *
  * @author edjr
  */
-public class Adm extends Pessoa{
+public class Adm{
     private String usuario;
     private String senha;
     public Adm(){}
-    public Adm(String nome, String numero, String cpf, String usuario, String senha) {
-        super(nome, numero, cpf);
-        this.usuario = usuario;
-        this.senha = senha;
-    }
+    
     public Adm(String usuario, String senha){
         this.usuario = usuario;
         this.senha = senha;

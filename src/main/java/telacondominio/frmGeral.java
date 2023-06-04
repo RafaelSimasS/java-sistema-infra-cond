@@ -10,6 +10,8 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import morador.Morador;
+import morador.ListaMoradores;
 
 /**
  *
@@ -48,9 +50,11 @@ public class frmGeral extends javax.swing.JFrame {
         lblTelefone = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         lblBloco = new javax.swing.JLabel();
-        comboBloco = new javax.swing.JComboBox<>();
+        cbBloco = new javax.swing.JComboBox<>();
         lblApartamento = new javax.swing.JLabel();
-        comboBloco1 = new javax.swing.JComboBox<>();
+        cbApartamento = new javax.swing.JComboBox<>();
+        lblCadastroMorador = new javax.swing.JLabel();
+        btnCadastrarMorador = new javax.swing.JButton();
         pnCadastroAdm = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
@@ -84,89 +88,119 @@ public class frmGeral extends javax.swing.JFrame {
         );
         pnInicioLayout.setVerticalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnInicioLayout.createSequentialGroup()
-                .addComponent(lblIconBemVindo)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(lblIconBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnCadastro.add(pnInicio, "telaAdm");
 
         lblNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNome.setText("Nome");
+        lblNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNomeMouseClicked(evt);
+            }
+        });
 
         lblCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCPF.setText("CPF");
+        lblCPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCPFMouseClicked(evt);
+            }
+        });
 
         lblTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTelefone.setText("Telefone");
+        lblTelefone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTelefoneMouseClicked(evt);
+            }
+        });
 
         lblBloco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblBloco.setText("Bloco");
 
-        comboBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         lblApartamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblApartamento.setText("Apartamento");
 
-        comboBloco1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        cbApartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+
+        lblCadastroMorador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCadastroMorador.setText("Cadastro de Morador");
+
+        btnCadastrarMorador.setText("Cadastrar");
+        btnCadastrarMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarMoradorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnCadastroMoradorLayout = new javax.swing.GroupLayout(pnCadastroMorador);
         pnCadastroMorador.setLayout(pnCadastroMoradorLayout);
         pnCadastroMoradorLayout.setHorizontalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMoradorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCadastroMorador)
+                .addGap(218, 218, 218))
             .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome)
-                            .addComponent(lblCPF))
-                        .addGap(28, 28, 28)
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                                .addComponent(lblTelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMoradorLayout.createSequentialGroup()
-                                .addComponent(lblBloco)
-                                .addGap(32, 32, 32)))
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                                .addComponent(comboBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblApartamento)
-                                .addGap(32, 32, 32)
-                                .addComponent(comboBloco1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGap(163, 163, 163)
+                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnCadastrarMorador)
+                    .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(28, 28, 28)
+                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblBloco))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(lblApartamento)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         pnCadastroMoradorLayout.setVerticalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(44, 44, 44)
+                .addComponent(lblCadastroMorador)
+                .addGap(18, 18, 18)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome)
+                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCPF))
-                .addGap(18, 18, 18)
+                    .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelefone))
+                    .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblApartamento)
-                        .addComponent(comboBloco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblBloco)
-                        .addComponent(comboBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addComponent(btnCadastrarMorador)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroMorador, "telaMorador");
@@ -282,30 +316,90 @@ public class frmGeral extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private boolean checarCampoVazioOuInvalido(String campo){
+        // checa se o campo em questão comecça com o caractere espaço em branco ou se está vazio
+        return campo.equals("") || campo.startsWith(" ");
+    }
+    private int checarLimpoMorador(){
+        // Checa se os campos da tela de cadastro de moradores estão limpos
+        String nome = txtNome.getText();
+        String cpf = txtCPF.getText();
+        String telefone = txtTelefone.getText();
+        if(checarCampoVazioOuInvalido(cpf) &&
+           checarCampoVazioOuInvalido(nome) && 
+           checarCampoVazioOuInvalido(telefone))
+        {
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    private int checarLimpoAdm(){
+        // Checa se os campos Usuario e Senha da Tela de cadastro de Admins estão limpos
+        String nome = txtUsuario.getText();
+        String password = new String(pasSenha.getPassword());
+        if(checarCampoVazioOuInvalido(password) && checarCampoVazioOuInvalido(nome)){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    
     private void mmCadastroMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroMoradorActionPerformed
-        pnCadastro.removeAll();
-        pnCadastro.add(pnCadastroMorador);
-        pnCadastro.repaint();
-        pnCadastro.revalidate();
+        if( checarLimpoAdm()== 1){
+            pnCadastro.removeAll();
+            pnCadastro.add(pnCadastroMorador);
+            pnCadastro.repaint();
+            pnCadastro.revalidate();
+        }else{
+            int flag = JOptionPane.showConfirmDialog(null, "Certeza que quer sair?\nUm ou mais campos contém alteração!"
+                    ,"Campo alterado.",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                txtUsuario.setText("");
+                pasSenha.setText("");
+                pnCadastro.removeAll();
+                pnCadastro.add(pnCadastroMorador);
+                pnCadastro.repaint();
+                pnCadastro.revalidate();
+            }else{
+                txtUsuario.requestFocus();
+            }
+        }
     }//GEN-LAST:event_mmCadastroMoradorActionPerformed
     
     private void mmCadastroAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroAdministradorActionPerformed
         // TODO add your handling code here:
-        pnCadastro.removeAll();
-        pnCadastro.add(pnCadastroAdm);
-        pnCadastro.repaint();
-        pnCadastro.revalidate();
-        
+        if( checarLimpoMorador()== 1){
+            pnCadastro.removeAll();
+            pnCadastro.add(pnCadastroAdm);
+            pnCadastro.repaint();
+            pnCadastro.revalidate();
+        }else{
+            int flag = JOptionPane.showConfirmDialog(null, "Certeza que quer sair?\nUm ou mais campos contém alteração!"
+                    ,"Campo alterado.",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                txtNome.setText("");
+                txtCPF.setText("");
+                txtTelefone.setText("");
+                pnCadastro.removeAll();
+                pnCadastro.add(pnCadastroAdm);
+                pnCadastro.repaint();
+                pnCadastro.revalidate();
+            }else{
+                txtNome.requestFocus();
+            }
+        }
         
     }//GEN-LAST:event_mmCadastroAdministradorActionPerformed
-
+    
     private void btnCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarActionPerformed
         // TODO add your handling code here:
         String usuario = txtUsuario.getText();
         String password = new String(pasSenha.getPassword());
         
-        if(usuario.equals("") || password.equals("") || usuario.startsWith(" ") || password.startsWith(" ") ){
+        if(checarCampoVazioOuInvalido(usuario)||
+           checarCampoVazioOuInvalido(password)){
             JOptionPane.showMessageDialog(null, "Um dos campos está vazio!", "Campo vazio", HEIGHT);
             txtUsuario.requestFocus();
         }else{
@@ -313,12 +407,20 @@ public class frmGeral extends javax.swing.JFrame {
             if (flag == JOptionPane.YES_OPTION){
                 Adm novoAdm = new Adm(usuario, password);
                 ListaAdministradores listaAdms = new ListaAdministradores();
-                listaAdms.adicionarAdministrador(novoAdm);
-                JOptionPane.showMessageDialog(null, "Um novo adiministrador foi adicionado!", 
-                                        "Adiministrador criado.", JOptionPane.INFORMATION_MESSAGE);
-                txtUsuario.setText("");
-                pasSenha.setText("");
-                txtUsuario.requestFocus();
+                if(listaAdms.adicionarAdministrador(novoAdm)){
+                    JOptionPane.showMessageDialog(null, "Um novo adiministrador foi adicionado!", 
+                                            "Adiministrador criado.", JOptionPane.INFORMATION_MESSAGE);
+                    txtUsuario.setText("");
+                    pasSenha.setText("");
+                    txtUsuario.requestFocus();
+                }else{
+                    JOptionPane.showMessageDialog(null, 
+              "Já existe um adiministrador com este nome!",
+              "Cadastro Inválido", HEIGHT);
+                    txtUsuario.setText("");
+                    pasSenha.setText("");
+                    txtUsuario.requestFocus();
+                }
             }else{
                 txtUsuario.setText("");
                 pasSenha.setText("");
@@ -351,6 +453,68 @@ public class frmGeral extends javax.swing.JFrame {
                 txtUsuario.requestFocus();
             }
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void lblNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNomeMouseClicked
+        // TODO add your handling code here:
+        txtNome.requestFocus();
+    }//GEN-LAST:event_lblNomeMouseClicked
+
+    private void lblCPFMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCPFMouseClicked
+        // TODO add your handling code here:
+        txtCPF.requestFocus();
+    }//GEN-LAST:event_lblCPFMouseClicked
+
+    private void lblTelefoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTelefoneMouseClicked
+        // TODO add your handling code here:
+        txtTelefone.requestFocus();
+    }//GEN-LAST:event_lblTelefoneMouseClicked
+    
+    private void btnCadastrarMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMoradorActionPerformed
+        // TODO add your handling code here:
+        String nome = txtNome.getText();
+        String cpf = txtCPF.getText();
+        String tele = txtTelefone.getText();
+        int bloco = Integer.parseInt(cbBloco.getSelectedItem().toString());
+        int numAp = Integer.parseInt(cbApartamento.getSelectedItem().toString());
+        if ( 
+                checarCampoVazioOuInvalido(cpf)|| 
+                checarCampoVazioOuInvalido(nome) || 
+                checarCampoVazioOuInvalido(tele))
+        {
+            JOptionPane.showMessageDialog(null, "Um dos campos está vazio!", "Campo vazio", HEIGHT);
+            txtNome.requestFocus();
+        }else{
+            int flag = JOptionPane.showConfirmDialog(null, 
+            "Deseja realmente cadastrar esse morador?\nMorador: "+nome+"\nCPF: "+ cpf+"\nTelefone: "+tele+".",
+            "Confirmação",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                Morador novoMorador = new Morador(nome, tele, cpf, bloco, numAp);
+                ListaMoradores listaMoradoresInc = new ListaMoradores();
+                if(listaMoradoresInc.adicionarMorador(novoMorador)){
+                    JOptionPane.showMessageDialog(null, "Morador cadastrado com sucesso!", 
+                                                "Morador Cadastrado.", JOptionPane.INFORMATION_MESSAGE);
+                    txtNome.setText("");
+                    txtCPF.setText("");
+                    txtTelefone.setText("");
+                    txtNome.requestFocus();
+                }else{
+                    JOptionPane.showMessageDialog(null, 
+              "Já existe um morador no mesmo apartamento ou com mesma informações cadastradas!",
+              "Cadastro Inválido", HEIGHT);
+                    txtNome.setText("");
+                    txtCPF.setText("");
+                    txtTelefone.setText("");
+                    txtNome.requestFocus();
+                }
+            }else{
+                txtNome.setText("");
+                txtCPF.setText("");
+                txtTelefone.setText("");
+                txtNome.requestFocus();
+            }
+        }
+        
+    }//GEN-LAST:event_btnCadastrarMoradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,13 +552,15 @@ public class frmGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrarMorador;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCriar;
-    private javax.swing.JComboBox<String> comboBloco;
-    private javax.swing.JComboBox<String> comboBloco1;
+    private javax.swing.JComboBox<String> cbApartamento;
+    private javax.swing.JComboBox<String> cbBloco;
     private javax.swing.JLabel lblApartamento;
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCadastroMorador;
     private javax.swing.JLabel lblIconBemVindo;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
