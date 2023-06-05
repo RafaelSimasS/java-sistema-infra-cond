@@ -6,13 +6,18 @@ package telacondominio;
 
 import administacao.Adm;
 import administacao.ListaAdministradores;
+import infracao.Infracao;
+import infracao.ListaInfracoes;
+import morador.Morador;
+import morador.ListaMoradores;
+import multa.Multa;
+import multa.ListaMultas;
+
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
-import morador.Morador;
-import morador.ListaMoradores;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,16 +53,17 @@ public class frmGeral extends javax.swing.JFrame {
         pnCadastroMorador = new javax.swing.JPanel();
         lblNome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        txtCPF = new javax.swing.JTextField();
         lblCPF = new javax.swing.JLabel();
         lblTelefone = new javax.swing.JLabel();
-        txtTelefone = new javax.swing.JTextField();
         lblBloco = new javax.swing.JLabel();
         cbBloco = new javax.swing.JComboBox<>();
         lblApartamento = new javax.swing.JLabel();
         cbApartamento = new javax.swing.JComboBox<>();
         lblCadastroMorador = new javax.swing.JLabel();
         btnCadastrarMorador = new javax.swing.JButton();
+        txtCPF = new javax.swing.JFormattedTextField();
+        txtTelefone = new javax.swing.JFormattedTextField();
+        btnCancelarMorador = new javax.swing.JButton();
         pnCadastroAdm = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
@@ -66,14 +72,24 @@ public class frmGeral extends javax.swing.JFrame {
         btnCriar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCadastroAdiministrador = new javax.swing.JLabel();
-        pnCadastroInfração = new javax.swing.JPanel();
+        pnCadastroMulta = new javax.swing.JPanel();
         cbMoradores = new javax.swing.JComboBox<>();
+        lblMorador = new javax.swing.JLabel();
+        lblValorMulta = new javax.swing.JLabel();
+        cbInfracao = new javax.swing.JComboBox<>();
+        lblInfracao = new javax.swing.JLabel();
+        lblCadastroMulta = new javax.swing.JLabel();
+        btnCadastrarMulta = new javax.swing.JButton();
+        lblValor = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
+        txtfData = new javax.swing.JFormattedTextField();
         menubarMenu = new javax.swing.JMenuBar();
         mInicio = new javax.swing.JMenu();
         mCadastros = new javax.swing.JMenu();
         mmCadastroMorador = new javax.swing.JMenuItem();
         mmCadastroAdministrador = new javax.swing.JMenuItem();
         mGereInfra = new javax.swing.JMenu();
+        mmCadastrarMulta = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -145,6 +161,25 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("# ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        btnCancelarMorador.setText("Cancelar");
+        btnCancelarMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarMoradorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnCadastroMoradorLayout = new javax.swing.GroupLayout(pnCadastroMorador);
         pnCadastroMorador.setLayout(pnCadastroMoradorLayout);
         pnCadastroMoradorLayout.setHorizontalGroup(
@@ -156,30 +191,33 @@ public class frmGeral extends javax.swing.JFrame {
             .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCadastrarMorador)
                     .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
                             .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(28, 28, 28)
-                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                                .addComponent(txtCPF)))
                         .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
                             .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblBloco))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
                                     .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(58, 58, 58)
                                     .addComponent(lblApartamento)
                                     .addGap(32, 32, 32)
                                     .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(175, Short.MAX_VALUE))
+                                .addComponent(txtTelefone))))
+                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                        .addComponent(btnCancelarMorador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCadastrarMorador)))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         pnCadastroMoradorLayout.setVerticalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,12 +230,12 @@ public class frmGeral extends javax.swing.JFrame {
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -207,7 +245,9 @@ public class frmGeral extends javax.swing.JFrame {
                         .addComponent(lblBloco)
                         .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
-                .addComponent(btnCadastrarMorador)
+                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrarMorador)
+                    .addComponent(btnCancelarMorador))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -257,7 +297,7 @@ public class frmGeral extends javax.swing.JFrame {
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroAdmLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCadastroAdiministrador)
@@ -285,30 +325,107 @@ public class frmGeral extends javax.swing.JFrame {
 
         pnCadastro.add(pnCadastroAdm, "card4");
 
-        cbMoradores.addActionListener(new java.awt.event.ActionListener() {
+        lblMorador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblMorador.setText("Morador");
+
+        lblValorMulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblValorMulta.setText("Valor da Multa");
+
+        cbInfracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbMoradoresActionPerformed(evt);
+                cbInfracaoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnCadastroInfraçãoLayout = new javax.swing.GroupLayout(pnCadastroInfração);
-        pnCadastroInfração.setLayout(pnCadastroInfraçãoLayout);
-        pnCadastroInfraçãoLayout.setHorizontalGroup(
-            pnCadastroInfraçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroInfraçãoLayout.createSequentialGroup()
-                .addContainerGap(486, Short.MAX_VALUE)
-                .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+        lblInfracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblInfracao.setText("Infração");
+
+        lblCadastroMulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCadastroMulta.setText("Cadastro de Multa");
+
+        btnCadastrarMulta.setText("Cadastrar Multa");
+        btnCadastrarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarMultaActionPerformed(evt);
+            }
+        });
+
+        lblValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+
+        lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblData.setText("Data");
+
+        try {
+            txtfData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtfData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfDataActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnCadastroMultaLayout = new javax.swing.GroupLayout(pnCadastroMulta);
+        pnCadastroMulta.setLayout(pnCadastroMultaLayout);
+        pnCadastroMultaLayout.setHorizontalGroup(
+            pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMultaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCadastroMulta)
+                .addGap(265, 265, 265))
+            .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMorador)
+                            .addComponent(lblData)
+                            .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValorMulta)
+                            .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblInfracao)))
+                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(btnCadastrarMulta)))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
-        pnCadastroInfraçãoLayout.setVerticalGroup(
-            pnCadastroInfraçãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnCadastroInfraçãoLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
+        pnCadastroMultaLayout.setVerticalGroup(
+            pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(lblCadastroMulta)
+                        .addGap(58, 58, 58)
+                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblMorador)
+                            .addComponent(lblValorMulta))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblInfracao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(lblData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(btnCadastrarMulta)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        pnCadastro.add(pnCadastroInfração, "card5");
+        pnCadastro.add(pnCadastroMulta, "card5");
 
         mInicio.setText("Início");
         mInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,7 +439,7 @@ public class frmGeral extends javax.swing.JFrame {
         mCadastros.setBorder(mSair.getBorder());
         mCadastros.setText("Cadastro");
 
-        mmCadastroMorador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmCadastroMorador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mmCadastroMorador.setText("Morador");
         mmCadastroMorador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,7 +448,7 @@ public class frmGeral extends javax.swing.JFrame {
         });
         mCadastros.add(mmCadastroMorador);
 
-        mmCadastroAdministrador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_NUMPAD2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmCadastroAdministrador.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mmCadastroAdministrador.setText("Administrador");
         mmCadastroAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,11 +460,16 @@ public class frmGeral extends javax.swing.JFrame {
         menubarMenu.add(mCadastros);
 
         mGereInfra.setText("Gerenciamento de Infrações");
-        mGereInfra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mGereInfraMouseClicked(evt);
+
+        mmCadastrarMulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmCadastrarMulta.setText("Cadastrar Multa");
+        mmCadastrarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmCadastrarMultaActionPerformed(evt);
             }
         });
+        mGereInfra.add(mmCadastrarMulta);
+
         menubarMenu.add(mGereInfra);
 
         mSair.setText("Sair");
@@ -394,7 +516,20 @@ public class frmGeral extends javax.swing.JFrame {
         String password = new String(pasSenha.getPassword());
         return checarCampoVazioOuInvalido(password) && checarCampoVazioOuInvalido(nome);
     }
-    
+    private void limpaCamposAdm(){
+        txtUsuario.setText("");
+        pasSenha.setText("");
+    }
+    private void limpaCamposMorador(){
+        txtNome.setText("");
+        txtCPF.setText("");
+        txtTelefone.setText("");
+        
+    }
+    private void limpaCamposGeral(){
+        limpaCamposAdm();
+        limpaCamposMorador();
+    }
     private void mmCadastroMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastroMoradorActionPerformed
         if( checarLimpoAdm()){
             pnCadastro.removeAll();
@@ -405,8 +540,7 @@ public class frmGeral extends javax.swing.JFrame {
             int flag = JOptionPane.showConfirmDialog(null, "Certeza que quer sair?\nUm ou mais campos contém alteração!"
                     ,"Campo alterado.",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtUsuario.setText("");
-                pasSenha.setText("");
+                limpaCamposAdm();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnCadastroMorador);
                 pnCadastro.repaint();
@@ -428,9 +562,7 @@ public class frmGeral extends javax.swing.JFrame {
             int flag = JOptionPane.showConfirmDialog(null, "Certeza que quer sair?\nUm ou mais campos contém alteração!"
                     ,"Campo alterado.",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtNome.setText("");
-                txtCPF.setText("");
-                txtTelefone.setText("");
+                limpaCamposMorador();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnCadastroAdm);
                 pnCadastro.repaint();
@@ -459,20 +591,17 @@ public class frmGeral extends javax.swing.JFrame {
                 if(listaAdms.adicionarAdministrador(novoAdm)){
                     JOptionPane.showMessageDialog(null, "Um novo adiministrador foi adicionado!", 
                                             "Adiministrador criado.", JOptionPane.INFORMATION_MESSAGE);
-                    txtUsuario.setText("");
-                    pasSenha.setText("");
+                    limpaCamposAdm();
                     txtUsuario.requestFocus();
                 }else{
                     JOptionPane.showMessageDialog(null, 
               "Já existe um adiministrador com este nome!",
               "Cadastro Inválido", HEIGHT);
-                    txtUsuario.setText("");
-                    pasSenha.setText("");
+                    limpaCamposAdm();
                     txtUsuario.requestFocus();
                 }
             }else{
-                txtUsuario.setText("");
-                pasSenha.setText("");
+                limpaCamposAdm();
                 txtUsuario.requestFocus();
             }
         }
@@ -485,8 +614,7 @@ public class frmGeral extends javax.swing.JFrame {
             int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
                     "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtUsuario.setText("");
-                pasSenha.setText("");
+                limpaCamposAdm();
                 frmLogin frameLogin = new frmLogin();
                 frameLogin.setVisible(true);
                 this.dispose();
@@ -498,9 +626,7 @@ public class frmGeral extends javax.swing.JFrame {
             int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
                     "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtNome.setText("");
-                txtCPF.setText("");
-                txtTelefone.setText("");
+                limpaCamposMorador();
                 frmLogin frameLogin = new frmLogin();
                 frameLogin.setVisible(true);
                 this.dispose();
@@ -516,12 +642,9 @@ public class frmGeral extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        String usuario = txtUsuario.getText();
-        String password = new String(pasSenha.getPassword());
         int flag = JOptionPane.showConfirmDialog(null, "Deseja cancelar o cadastro?","Cancelar cadastro",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtUsuario.setText("");
-                pasSenha.setText("");
+                limpaCamposAdm();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnInicio);
                 pnCadastro.repaint();
@@ -630,30 +753,132 @@ public class frmGeral extends javax.swing.JFrame {
             pnCadastro.revalidate();  
         }
     }//GEN-LAST:event_mInicioMouseClicked
-
-    private void cbMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMoradoresActionPerformed
+    
+    private void carregaCbBoxesMultas(){
+        ListaMoradores listaMoradores = new ListaMoradores();
+        List<Morador> moradores = listaMoradores.getMoradores();
+        
+        ListaInfracoes listaInfracoes = new ListaInfracoes();
+        List<Infracao> infracoes = listaInfracoes.getInfracoes();
+        
+        
+        DefaultComboBoxModel<String> comboBoxModelMoradores = new DefaultComboBoxModel<>();
+        for (Morador morador : moradores){
+            String nomeCpf = morador.getNome() +"("+morador.getCpf()+")";
+            comboBoxModelMoradores.addElement(nomeCpf); // Adiciona no cb o nome dos moradores com CPF
+        }
+        cbMoradores.setModel(comboBoxModelMoradores);
+        
+        DefaultComboBoxModel<String> comboBoxModelInfracoes = new DefaultComboBoxModel<>();
+        for( Infracao infracao : infracoes){
+            comboBoxModelInfracoes.addElement(infracao.getNomeInfracao());
+        }
+        cbInfracao.setModel(comboBoxModelInfracoes);
+    }
+    
+    private void mmCadastrarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastrarMultaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbMoradoresActionPerformed
-
-    private void mGereInfraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mGereInfraMouseClicked
-        // TODO add your handling code here:
-        if(checarLimpoAdm() && checarLimpoMorador()){
-            ListaMoradores listaMoradores = new ListaMoradores();
-
-            List<Morador> moradores = listaMoradores.getMoradores();
-            DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-            for (Morador morador : moradores){
-                comboBoxModel.addElement(morador.getNome());
-            }
-            cbMoradores.setModel(comboBoxModel);
+        if(checarLimpoAdm() && checarLimpoMorador()){ // Checa se as outras telas estão limpas para poder mudar
+            
+            carregaCbBoxesMultas();
             pnCadastro.removeAll();
-            pnCadastro.add(pnCadastroInfração);
+            pnCadastro.add(pnCadastroMulta);
             pnCadastro.repaint();
             pnCadastro.revalidate(); 
             
+        }else{
+            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um ou mais dos campos.",
+                    "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                limpaCamposGeral();
+                carregaCbBoxesMultas();
+                pnCadastro.removeAll();
+                pnCadastro.add(pnCadastroMulta);
+                pnCadastro.repaint();
+                pnCadastro.revalidate();
+            }
         }
+    }//GEN-LAST:event_mmCadastrarMultaActionPerformed
+
+    private void cbInfracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInfracaoActionPerformed
+        // TODO add your handling code here:
+        // Atualiza o valor da multa de acordo com o tipo de infração selecionada
+        String infracaoSelecionada = (String) cbInfracao.getSelectedItem();
+        ListaInfracoes listaInfracoes = new ListaInfracoes();
+        List<Infracao> infracoes = listaInfracoes.getInfracoes();
+        for(Infracao infracao : infracoes){
+            if(infracao.getNomeInfracao().equals(infracaoSelecionada)){
+                double valor = infracao.getValor();
+                lblValor.setText(String.valueOf(valor));
+                break;
+            }
+        }
+    }//GEN-LAST:event_cbInfracaoActionPerformed
+
+    private void btnCadastrarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMultaActionPerformed
+        // TODO add your handling code here:
+        String nomeCpfSelecionado = (String) cbMoradores.getSelectedItem();
+        String nomeInfracaoSelecionada = (String) cbInfracao.getSelectedItem();
+        String valor = lblValor.getText();
+        String data = txtfData.getText();
         
-    }//GEN-LAST:event_mGereInfraMouseClicked
+        String nome = nomeCpfSelecionado.substring(0, nomeCpfSelecionado.indexOf("("));
+        String cpf = nomeCpfSelecionado.substring(nomeCpfSelecionado.indexOf("(")+1, nomeCpfSelecionado.indexOf(")"));
+        Morador moradorSelecionado = null;
+        Infracao infracaoSelecionada = null;
+        
+        int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente cadastrar a seguinte multa?\nMorador: "
+                +nome+".\nInfração: "+nomeInfracaoSelecionada+
+                ".\nValor: R$"+valor+".\nData: "+data,
+                "Confirmação",JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION){
+                ListaMoradores listaMoradores = new ListaMoradores();
+                List<Morador> moradores = listaMoradores.getMoradores();
+
+                ListaInfracoes listaInfracoes = new ListaInfracoes();
+                List<Infracao> infracoes = listaInfracoes.getInfracoes();
+                ListaMultas listaMultas = new ListaMultas();
+                
+                for(Morador morador : moradores){
+                    if(morador.getNome().equals(nome) && morador.getCpf().equals(cpf)){
+                        moradorSelecionado = morador;
+                        break;
+                    }
+                }
+                for(Infracao infracao : infracoes){
+                    if(infracao.getNomeInfracao().equals(nomeInfracaoSelecionada)){
+                        infracaoSelecionada = infracao;
+                        break;
+                    }
+                }
+                if(moradorSelecionado != null && infracaoSelecionada != null){
+                    Multa novaMulta = new Multa(moradorSelecionado, infracaoSelecionada, data);
+                    listaMultas.adicionarMulta(novaMulta);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
+                            + "Morador ou Infração não foi encontrado.", 
+                            "Erro de Login", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+    }//GEN-LAST:event_btnCadastrarMultaActionPerformed
+
+    private void txtfDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfDataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfDataActionPerformed
+
+    private void btnCancelarMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarMoradorActionPerformed
+        // TODO add your handling code here:
+        int flag = JOptionPane.showConfirmDialog(null, "Deseja cancelar o cadastro?","Cancelar cadastro",JOptionPane.YES_NO_OPTION);
+        if (flag == JOptionPane.YES_OPTION){
+            limpaCamposMorador();
+            pnCadastro.removeAll();
+            pnCadastro.add(pnInicio);
+            pnCadastro.repaint();
+            pnCadastro.revalidate();
+        }else{
+            txtNome.requestFocus();
+        }
+    }//GEN-LAST:event_btnCancelarMoradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -692,37 +917,48 @@ public class frmGeral extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarMorador;
+    private javax.swing.JButton btnCadastrarMulta;
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelarMorador;
     private javax.swing.JButton btnCriar;
     private javax.swing.JComboBox<String> cbApartamento;
     private javax.swing.JComboBox<String> cbBloco;
+    private javax.swing.JComboBox<String> cbInfracao;
     private javax.swing.JComboBox<String> cbMoradores;
     private javax.swing.JLabel lblApartamento;
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCadastroAdiministrador;
     private javax.swing.JLabel lblCadastroMorador;
+    private javax.swing.JLabel lblCadastroMulta;
+    private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblIconBemVindo;
+    private javax.swing.JLabel lblInfracao;
+    private javax.swing.JLabel lblMorador;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblValor;
+    private javax.swing.JLabel lblValorMulta;
     private javax.swing.JMenu mCadastros;
     private javax.swing.JMenu mGereInfra;
     private javax.swing.JMenu mInicio;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuBar menubarMenu;
+    private javax.swing.JMenuItem mmCadastrarMulta;
     private javax.swing.JMenuItem mmCadastroAdministrador;
     private javax.swing.JMenuItem mmCadastroMorador;
     private javax.swing.JPasswordField pasSenha;
     private javax.swing.JPanel pnCadastro;
     private javax.swing.JPanel pnCadastroAdm;
-    private javax.swing.JPanel pnCadastroInfração;
     private javax.swing.JPanel pnCadastroMorador;
+    private javax.swing.JPanel pnCadastroMulta;
     private javax.swing.JPanel pnInicio;
-    private javax.swing.JTextField txtCPF;
+    private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtTelefone;
+    private javax.swing.JFormattedTextField txtTelefone;
     private javax.swing.JTextField txtUsuario;
+    private javax.swing.JFormattedTextField txtfData;
     // End of variables declaration//GEN-END:variables
 }

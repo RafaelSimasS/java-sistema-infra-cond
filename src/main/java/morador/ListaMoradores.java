@@ -26,18 +26,20 @@ public class ListaMoradores {
         return moradores;
     }
     private boolean existeMorador(Morador morador){
-        for (Morador m: moradores){
-            if (m.getNome().equals(morador.getNome())
-                && m.getCpf().equals(morador.getCpf())) {
-            // Já existe um morador com o mesmo nome e CPF
-            return true;
-            }
-            if (m.getNumAp() == morador.getNumAp()
-                    && m.getBloco() == morador.getBloco()) {
-                // Já existe um morador no mesmo apartamento e bloco
+        
+        for (Morador m : moradores) {
+            if(m.getCpf().equals(morador.getCpf())){
+                if(m.getNome().equals(morador.getNome())){
+                    return m.getBloco() == morador.getBloco() && m.getNumAp() == morador.getNumAp();
+                }else{
+                    return true;
+                }
+            }else if( m.getBloco() == morador.getBloco() && m.getNumAp() == morador.getNumAp() ){
                 return true;
             }
+            
         }
+    
         return false;
     }
 }

@@ -6,11 +6,10 @@ package telacondominio;
 
 import administacao.Adm;
 import administacao.ListaAdministradores;
-import java.awt.BorderLayout;
+import infracao.*;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Icon;
 
@@ -25,6 +24,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     // cria uma variável do tipo Adm para criar um novo administrador
     private Adm adminPadrao;
+    private Infracao infracaoPadrao;
     
     public frmLogin() {
         initComponents();
@@ -34,6 +34,7 @@ public class frmLogin extends javax.swing.JFrame {
         lblIcon.setIcon(new ImageIcon(image));
         // CRIA INSTÂNCIA DA CLASSE ADM PARA CRIAR UM ADM PADRÃO
         adminPadrao = new Adm("a", "a");
+        infracaoPadrao = new Infracao("Lixo em local inadequado", 2.30);
     }
 
     /**
@@ -231,6 +232,9 @@ public class frmLogin extends javax.swing.JFrame {
             // criar admin padrão
             ListaAdministradores listaAdministradores = new ListaAdministradores();
             listaAdministradores.adicionarAdministrador(new frmLogin().adminPadrao);
+            
+            ListaInfracoes listaInfracoes = new ListaInfracoes();
+            listaInfracoes.adicionarInfracao(new frmLogin().infracaoPadrao);
             new frmLogin().setVisible(true);
             
         });

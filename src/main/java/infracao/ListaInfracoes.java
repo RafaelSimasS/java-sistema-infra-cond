@@ -12,12 +12,25 @@ import java.util.List;
 public class ListaInfracoes {
     private static List<Infracao> infracoes = new ArrayList<>();
     
-    public void adicionarInfracao(Infracao infracao) {
-        infracoes.add(infracao);
+    public boolean adicionarInfracao(Infracao infracao) {
+        if(!existeInfracao(infracao)){
+            infracoes.add(infracao);
+            return true;
+        }else{
+            return false;
+        } 
     }
 
     public List<Infracao> getInfracoes() {
         return infracoes;
     }
-    
+    private boolean existeInfracao(Infracao infracao){
+        for (Infracao infra: infracoes){
+            if ( infra.getNomeInfracao().equals(infracao.getNomeInfracao()) ) {
+            // Já existe uma infração com esse nome
+            return true;
+            }
+        }
+        return false;
+    }
 }

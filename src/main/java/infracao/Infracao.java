@@ -4,45 +4,34 @@
  */
 package infracao;
 
-import morador.Morador;
-
 /**
  *
- * @author Sparq
+ * @author leafar
  */
 public class Infracao {
-    Morador cliente;
-    float valor;
-    String infracao;
-
-    public Infracao(Morador cliente, float valor, String infracao) {
-        this.cliente = cliente;
+    String nomeInfracao;
+    double valor;
+    
+    public Infracao(String infracao, double valor) {
+        this.nomeInfracao = infracao;
         this.valor = valor;
-        this.infracao = infracao;
     }
 
-    public Morador getCliente() {
-        return cliente;
+    public String getNomeInfracao() {
+        return nomeInfracao;
     }
 
-    public void setCliente(Morador cliente) {
-        this.cliente = cliente;
+    public void setNomeInfracao(String nomeInfracao) {
+        this.nomeInfracao = nomeInfracao;
     }
 
-    public float getValor() {
+    public double getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(double valor) {
         this.valor = valor;
     }
-
-    public String getInfracao() {
-        return infracao;
-    }
-
-    public void setInfracao(String infracao) {
-        this.infracao = infracao;
-    }
+    
     
 }
