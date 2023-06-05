@@ -42,4 +42,14 @@ public class ListaMoradores {
     
         return false;
     }
+    public boolean removerMorador(String nome, String cpf, int bloco, int numAp) {
+        for (Morador morador : moradores) {
+            if (morador.getNome().equals(nome) && morador.getCpf().equals(cpf) &&
+                    morador.getBloco() == bloco && morador.getNumAp() == numAp) {
+                moradores.remove(morador);
+                return true;
+            }
+        }
+        return false;
+    }
 }

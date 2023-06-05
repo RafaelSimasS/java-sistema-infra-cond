@@ -13,6 +13,9 @@ import morador.ListaMoradores;
 import multa.Multa;
 import multa.ListaMultas;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -64,6 +67,7 @@ public class frmGeral extends javax.swing.JFrame {
         txtCPF = new javax.swing.JFormattedTextField();
         txtTelefone = new javax.swing.JFormattedTextField();
         btnCancelarMorador = new javax.swing.JButton();
+        btnRemoverMorador = new javax.swing.JButton();
         pnCadastroAdm = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
@@ -72,6 +76,7 @@ public class frmGeral extends javax.swing.JFrame {
         btnCriar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCadastroAdiministrador = new javax.swing.JLabel();
+        btnRemoverAdm = new javax.swing.JButton();
         pnCadastroMulta = new javax.swing.JPanel();
         cbMoradores = new javax.swing.JComboBox<>();
         lblMorador = new javax.swing.JLabel();
@@ -83,6 +88,10 @@ public class frmGeral extends javax.swing.JFrame {
         lblValor = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
         txtfData = new javax.swing.JFormattedTextField();
+        pnTabelaMultas = new javax.swing.JPanel();
+        lblTabelaMultas = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbMultas = new javax.swing.JTable();
         menubarMenu = new javax.swing.JMenuBar();
         mInicio = new javax.swing.JMenu();
         mCadastros = new javax.swing.JMenu();
@@ -90,6 +99,7 @@ public class frmGeral extends javax.swing.JFrame {
         mmCadastroAdministrador = new javax.swing.JMenuItem();
         mGereInfra = new javax.swing.JMenu();
         mmCadastrarMulta = new javax.swing.JMenuItem();
+        mmTabelaMultas = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +108,7 @@ public class frmGeral extends javax.swing.JFrame {
 
         pnCadastro.setLayout(new java.awt.CardLayout());
 
-        pnInicio.setBackground(new java.awt.Color(102, 102, 102));
+        pnInicio.setBackground(new java.awt.Color(218, 218, 218));
 
         lblIconBemVindo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacondominio/iconBemVindo.png"))); // NOI18N
 
@@ -180,44 +190,52 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
+        btnRemoverMorador.setText("Remover Morador");
+        btnRemoverMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverMoradorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnCadastroMoradorLayout = new javax.swing.GroupLayout(pnCadastroMorador);
         pnCadastroMorador.setLayout(pnCadastroMoradorLayout);
         pnCadastroMoradorLayout.setHorizontalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMoradorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCadastroMorador)
-                .addGap(218, 218, 218))
             .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
                 .addGap(163, 163, 163)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(28, 28, 28)
-                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                .addComponent(txtCPF)))
-                        .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblBloco))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                            .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(58, 58, 58)
-                                    .addComponent(lblApartamento)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtTelefone))))
+                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(txtCPF)))
+                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblBloco))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                                .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addComponent(lblApartamento)
+                                .addGap(32, 32, 32)
+                                .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTelefone)))
+                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
+                        .addComponent(btnRemoverMorador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelarMorador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnCadastrarMorador)))
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMoradorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCadastroMorador)
+                .addGap(239, 239, 239))
         );
         pnCadastroMoradorLayout.setVerticalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,8 +265,9 @@ public class frmGeral extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrarMorador)
-                    .addComponent(btnCancelarMorador))
-                .addContainerGap(44, Short.MAX_VALUE))
+                    .addComponent(btnCancelarMorador)
+                    .addComponent(btnRemoverMorador))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroMorador, "telaMorador");
@@ -278,13 +297,31 @@ public class frmGeral extends javax.swing.JFrame {
         lblCadastroAdiministrador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblCadastroAdiministrador.setText("Cadastro de Adiministrador");
 
+        btnRemoverAdm.setText("Remover Adimin");
+        btnRemoverAdm.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        btnRemoverAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverAdmActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnCadastroAdmLayout = new javax.swing.GroupLayout(pnCadastroAdm);
         pnCadastroAdm.setLayout(pnCadastroAdmLayout);
         pnCadastroAdmLayout.setHorizontalGroup(
             pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroAdmLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblCadastroAdiministrador)
+                .addGap(202, 202, 202))
             .addGroup(pnCadastroAdmLayout.createSequentialGroup()
                 .addGap(176, 176, 176)
-                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+                        .addComponent(btnRemoverAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnCadastroAdmLayout.createSequentialGroup()
                         .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUsuario)
@@ -292,16 +329,8 @@ public class frmGeral extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario)
-                            .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnCadastroAdmLayout.createSequentialGroup()
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(247, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroAdmLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCadastroAdiministrador)
-                .addGap(202, 202, 202))
+                            .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         pnCadastroAdmLayout.setVerticalGroup(
             pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,8 +348,9 @@ public class frmGeral extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCriar)
-                    .addComponent(btnCancelar))
-                .addContainerGap(149, Short.MAX_VALUE))
+                    .addComponent(btnCancelar)
+                    .addComponent(btnRemoverAdm))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroAdm, "card4");
@@ -375,14 +405,14 @@ public class frmGeral extends javax.swing.JFrame {
                 .addComponent(lblCadastroMulta)
                 .addGap(265, 265, 265))
             .addGroup(pnCadastroMultaLayout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMorador)
+                    .addComponent(lblData)
+                    .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMorador)
-                            .addComponent(lblData)
-                            .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblValorMulta)
@@ -392,9 +422,9 @@ public class frmGeral extends javax.swing.JFrame {
                             .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblInfracao)))
                     .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                        .addGap(287, 287, 287)
+                        .addGap(55, 55, 55)
                         .addComponent(btnCadastrarMulta)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         pnCadastroMultaLayout.setVerticalGroup(
             pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,7 +439,7 @@ public class frmGeral extends javax.swing.JFrame {
                             .addComponent(lblValorMulta))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblValor, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                             .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnCadastroMultaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -422,10 +452,52 @@ public class frmGeral extends javax.swing.JFrame {
                 .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(btnCadastrarMulta)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroMulta, "card5");
+
+        lblTabelaMultas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabelaMultas.setText("Tabela de Multas");
+
+        tbMultas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tbMultas);
+
+        javax.swing.GroupLayout pnTabelaMultasLayout = new javax.swing.GroupLayout(pnTabelaMultas);
+        pnTabelaMultas.setLayout(pnTabelaMultasLayout);
+        pnTabelaMultasLayout.setHorizontalGroup(
+            pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTabelaMultasLayout.createSequentialGroup()
+                .addGroup(pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnTabelaMultasLayout.createSequentialGroup()
+                        .addGap(282, 282, 282)
+                        .addComponent(lblTabelaMultas))
+                    .addGroup(pnTabelaMultasLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        pnTabelaMultasLayout.setVerticalGroup(
+            pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTabelaMultasLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblTabelaMultas)
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+
+        pnCadastro.add(pnTabelaMultas, "card6");
 
         mInicio.setText("Início");
         mInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -461,7 +533,7 @@ public class frmGeral extends javax.swing.JFrame {
 
         mGereInfra.setText("Gerenciamento de Infrações");
 
-        mmCadastrarMulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmCadastrarMulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mmCadastrarMulta.setText("Cadastrar Multa");
         mmCadastrarMulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -469,6 +541,15 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
         mGereInfra.add(mmCadastrarMulta);
+
+        mmTabelaMultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_5, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmTabelaMultas.setText("Tabela de Multas");
+        mmTabelaMultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmTabelaMultasActionPerformed(evt);
+            }
+        });
+        mGereInfra.add(mmTabelaMultas);
 
         menubarMenu.add(mGereInfra);
 
@@ -821,45 +902,57 @@ public class frmGeral extends javax.swing.JFrame {
         String nomeInfracaoSelecionada = (String) cbInfracao.getSelectedItem();
         String valor = lblValor.getText();
         String data = txtfData.getText();
-        
-        String nome = nomeCpfSelecionado.substring(0, nomeCpfSelecionado.indexOf("("));
-        String cpf = nomeCpfSelecionado.substring(nomeCpfSelecionado.indexOf("(")+1, nomeCpfSelecionado.indexOf(")"));
-        Morador moradorSelecionado = null;
-        Infracao infracaoSelecionada = null;
-        
-        int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente cadastrar a seguinte multa?\nMorador: "
-                +nome+".\nInfração: "+nomeInfracaoSelecionada+
-                ".\nValor: R$"+valor+".\nData: "+data,
-                "Confirmação",JOptionPane.YES_NO_OPTION);
-            if (flag == JOptionPane.YES_OPTION){
-                ListaMoradores listaMoradores = new ListaMoradores();
-                List<Morador> moradores = listaMoradores.getMoradores();
+        try{
+            String nome = nomeCpfSelecionado.substring(0, nomeCpfSelecionado.indexOf("("));
+            String cpf = nomeCpfSelecionado.substring(nomeCpfSelecionado.indexOf("(")+1, nomeCpfSelecionado.indexOf(")"));
+            
+            Morador moradorSelecionado = null;
+            Infracao infracaoSelecionada = null;
 
-                ListaInfracoes listaInfracoes = new ListaInfracoes();
-                List<Infracao> infracoes = listaInfracoes.getInfracoes();
-                ListaMultas listaMultas = new ListaMultas();
-                
-                for(Morador morador : moradores){
-                    if(morador.getNome().equals(nome) && morador.getCpf().equals(cpf)){
-                        moradorSelecionado = morador;
-                        break;
+            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente cadastrar a seguinte multa?\nMorador: "
+                    +nome+".\nInfração: "+nomeInfracaoSelecionada+
+                    ".\nValor: R$"+valor+".\nData: "+data,
+                    "Confirmação",JOptionPane.YES_NO_OPTION);
+                if (flag == JOptionPane.YES_OPTION){
+                    ListaMoradores listaMoradores = new ListaMoradores();
+                    List<Morador> moradores = listaMoradores.getMoradores();
+
+                    ListaInfracoes listaInfracoes = new ListaInfracoes();
+                    List<Infracao> infracoes = listaInfracoes.getInfracoes();
+                    ListaMultas listaMultas = new ListaMultas();
+
+                    for(Morador morador : moradores){
+                        if(morador.getNome().equals(nome) && morador.getCpf().equals(cpf)){
+                            moradorSelecionado = morador;
+                            break;
+                        }
+                    }
+                    for(Infracao infracao : infracoes){
+                        if(infracao.getNomeInfracao().equals(nomeInfracaoSelecionada)){
+                            infracaoSelecionada = infracao;
+                            break;
+                        }
+                    }
+                    if(moradorSelecionado != null && infracaoSelecionada != null){
+                        Multa novaMulta = new Multa(moradorSelecionado, infracaoSelecionada, data);
+                        try{
+                            listaMultas.adicionarMulta(novaMulta);
+                            JOptionPane.showMessageDialog(null, "Multa cadastrada com sucesso!", 
+                                                "Multa Cadastrada.", JOptionPane.INFORMATION_MESSAGE);
+                        }catch(Exception e){
+                            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
+                                + "Morador ou Infração não foi encontrado.", 
+                                "Erro Interno", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
+                                + "Morador ou Infração não foi encontrado.", 
+                                "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
                     }
                 }
-                for(Infracao infracao : infracoes){
-                    if(infracao.getNomeInfracao().equals(nomeInfracaoSelecionada)){
-                        infracaoSelecionada = infracao;
-                        break;
-                    }
-                }
-                if(moradorSelecionado != null && infracaoSelecionada != null){
-                    Multa novaMulta = new Multa(moradorSelecionado, infracaoSelecionada, data);
-                    listaMultas.adicionarMulta(novaMulta);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
-                            + "Morador ou Infração não foi encontrado.", 
-                            "Erro de Login", JOptionPane.ERROR_MESSAGE);
-                }
-            }
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Há campos vazios.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCadastrarMultaActionPerformed
 
     private void txtfDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfDataActionPerformed
@@ -879,6 +972,63 @@ public class frmGeral extends javax.swing.JFrame {
             txtNome.requestFocus();
         }
     }//GEN-LAST:event_btnCancelarMoradorActionPerformed
+
+    private void btnRemoverMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMoradorActionPerformed
+        // TODO add your handling code here:
+        frmRemoveMorador frameRemoveMorador = new frmRemoveMorador();
+        frameRemoveMorador.carregaCbBoxesRemoverMorador();
+        frameRemoveMorador.setVisible(true);
+    }//GEN-LAST:event_btnRemoverMoradorActionPerformed
+
+    private void btnRemoverAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverAdmActionPerformed
+        // TODO add your handling code here:
+        frmRemoverAdiministrador frameRemoverAdm = new frmRemoverAdiministrador();
+        frameRemoverAdm.carregaCbBoxesRemoverAdimin();
+        frameRemoverAdm.setVisible(true);
+    }//GEN-LAST:event_btnRemoverAdmActionPerformed
+    private void carregaMultasNaTabela(){
+        
+        ListaMultas listaMultas = new ListaMultas();
+        // Define um coluna para a tabela
+        String[] colunas = {"Nome", "CPF", "Bloco", "Apartamento", "Infração", "Valor", "Data"};
+        
+        DefaultTableModel tableModel = new DefaultTableModel(colunas, 0){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        List<Multa> multas = listaMultas.getMultas();
+        for (Multa multa : multas) {
+            Morador cliente = multa.getCliente();
+            Infracao infracao = multa.getInfracao();
+            Object[] rowData = {
+                    cliente.getNome(),
+                    cliente.getCpf(),
+                    cliente.getBloco(),
+                    cliente.getNumAp(),
+                    infracao.getNomeInfracao(),
+                    infracao.getValor(),
+                    multa.getData()
+            };
+            tableModel.addRow(rowData);
+        }
+        tbMultas.setModel(tableModel);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+        tbMultas.setRowSorter(sorter);
+    
+    }
+    
+    private void mmTabelaMultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmTabelaMultasActionPerformed
+        // TODO add your handling code here:
+        carregaMultasNaTabela();
+        pnCadastro.removeAll();
+        pnCadastro.add(pnTabelaMultas);
+        pnCadastro.repaint();
+        pnCadastro.revalidate();
+        
+    }//GEN-LAST:event_mmTabelaMultasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -921,10 +1071,13 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCancelarMorador;
     private javax.swing.JButton btnCriar;
+    private javax.swing.JButton btnRemoverAdm;
+    private javax.swing.JButton btnRemoverMorador;
     private javax.swing.JComboBox<String> cbApartamento;
     private javax.swing.JComboBox<String> cbBloco;
     private javax.swing.JComboBox<String> cbInfracao;
     private javax.swing.JComboBox<String> cbMoradores;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblApartamento;
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblCPF;
@@ -937,6 +1090,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JLabel lblMorador;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblTabelaMultas;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JLabel lblValor;
@@ -949,12 +1103,15 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JMenuItem mmCadastrarMulta;
     private javax.swing.JMenuItem mmCadastroAdministrador;
     private javax.swing.JMenuItem mmCadastroMorador;
+    private javax.swing.JMenuItem mmTabelaMultas;
     private javax.swing.JPasswordField pasSenha;
     private javax.swing.JPanel pnCadastro;
     private javax.swing.JPanel pnCadastroAdm;
     private javax.swing.JPanel pnCadastroMorador;
     private javax.swing.JPanel pnCadastroMulta;
     private javax.swing.JPanel pnInicio;
+    private javax.swing.JPanel pnTabelaMultas;
+    private javax.swing.JTable tbMultas;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtNome;
     private javax.swing.JFormattedTextField txtTelefone;

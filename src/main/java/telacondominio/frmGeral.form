@@ -55,12 +55,23 @@
             <MenuItem class="javax.swing.JMenuItem" name="mmCadastrarMulta">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Ctrl+3"/>
+                  <KeyStroke key="Ctrl+4"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar Multa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmCadastrarMultaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mmTabelaMultas">
+              <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Ctrl+5"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tabela de Multas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mmTabelaMultasActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -118,7 +129,7 @@
         <Container class="javax.swing.JPanel" name="pnInicio">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="66" type="rgb"/>
+              <Color blue="da" green="da" red="da" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -162,51 +173,51 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblCadastroMorador" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblNome" min="-2" pref="51" max="-2" attributes="0"/>
-                                      <Component id="lblCPF" min="-2" pref="51" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtNome" pref="251" max="32767" attributes="0"/>
-                                      <Component id="txtCPF" max="32767" attributes="0"/>
-                                  </Group>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblNome" min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Component id="lblCPF" min="-2" pref="51" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblTelefone" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
-                                      <Component id="lblBloco" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="28" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="cbBloco" min="-2" pref="40" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                          <Component id="lblApartamento" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                          <Component id="cbApartamento" min="-2" pref="40" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txtTelefone" max="32767" attributes="0"/>
-                                  </Group>
+                              <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtNome" pref="251" max="32767" attributes="0"/>
+                                  <Component id="txtCPF" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTelefone" alignment="0" min="-2" pref="51" max="-2" attributes="0"/>
+                                  <Component id="lblBloco" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="cbBloco" min="-2" pref="40" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                      <Component id="lblApartamento" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="cbApartamento" min="-2" pref="40" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtTelefone" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="btnRemoverMorador" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnCancelarMorador" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnCadastrarMorador" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="204" max="32767" attributes="0"/>
+                      <EmptySpace pref="232" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblCadastroMorador" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -245,8 +256,9 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCadastrarMorador" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCancelarMorador" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRemoverMorador" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="54" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -383,6 +395,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarMoradorActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnRemoverMorador">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Remover Morador"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverMoradorActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnCadastroAdm">
@@ -395,10 +415,22 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lblCadastroAdiministrador" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnRemoverAdm" min="-2" pref="104" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnCancelar" min="-2" pref="89" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnCriar" min="-2" pref="89" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblSenha" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -409,18 +441,8 @@
                                   <Component id="pasSenha" min="-2" pref="208" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnCancelar" min="-2" pref="89" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnCriar" min="-2" pref="89" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
-                      <EmptySpace pref="247" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblCadastroAdiministrador" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="202" max="-2" attributes="0"/>
+                      <EmptySpace pref="231" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -443,8 +465,9 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnCriar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRemoverAdm" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="149" max="32767" attributes="0"/>
+                      <EmptySpace pref="159" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -504,6 +527,19 @@
                 <Property name="text" type="java.lang.String" value="Cadastro de Adiministrador"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="btnRemoverAdm">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Remover Adimin"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder bevelType="0"/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoverAdmActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnCadastroMulta">
@@ -522,15 +558,15 @@
                       <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cbMoradores" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
-                                  <Component id="lblMorador" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblData" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtfData" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
+                          <Component id="cbMoradores" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                          <Component id="lblMorador" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblData" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfData" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblValorMulta" min="-2" max="-2" attributes="0"/>
@@ -543,11 +579,11 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="btnCadastrarMulta" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace pref="89" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -565,7 +601,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblValor" max="32767" attributes="0"/>
+                                  <Component id="lblValor" pref="27" max="32767" attributes="0"/>
                                   <Component id="cbMoradores" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -582,7 +618,7 @@
                       <Component id="txtfData" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Component id="btnCadastrarMulta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -670,6 +706,75 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfDataActionPerformed"/>
               </Events>
             </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="pnTabelaMultas">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card6"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
+                              <Component id="lblTabelaMultas" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="648" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="lblTabelaMultas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="196" max="-2" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblTabelaMultas">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Tabela de Multas"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tbMultas">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="4">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>

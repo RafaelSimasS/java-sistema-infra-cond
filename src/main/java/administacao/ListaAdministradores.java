@@ -34,4 +34,13 @@ public class ListaAdministradores {
         }
         return false;
     }
+    public boolean removeAdimin(String nome){
+        for (Adm adm : administradores) {
+            if (adm.getUsuario().equals(nome)){
+                administradores.remove(adm);
+                return true;
+            }
+        }
+        return false;
+    }
 }
