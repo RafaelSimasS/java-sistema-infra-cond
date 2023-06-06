@@ -33,4 +33,15 @@ public class ListaInfracoes {
         }
         return false;
     }
+    
+    public boolean removeInfracao(String nomeInfracao){
+        for (Infracao infracao : infracoes) {
+            if (infracao.getNomeInfracao().equals(nomeInfracao)) {
+                infracoes.remove(infracao);
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }

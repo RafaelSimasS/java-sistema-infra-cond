@@ -15,7 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 
 /**
  *
- * @author Sparq
+ * @author leafar
  */
 public class frmRemoveMorador extends javax.swing.JFrame {
 
@@ -35,34 +35,42 @@ public class frmRemoveMorador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbMoradores = new javax.swing.JComboBox<>();
+        pnPrincipal = new javax.swing.JPanel();
+        pnFormRemove = new javax.swing.JPanel();
         cbBloco = new javax.swing.JComboBox<>();
         cbApartamento = new javax.swing.JComboBox<>();
-        lblRemoverMorador = new javax.swing.JLabel();
-        lblMorador = new javax.swing.JLabel();
         lblBloco = new javax.swing.JLabel();
+        lblMorador = new javax.swing.JLabel();
+        cbMoradores = new javax.swing.JComboBox<>();
         lblApartamento = new javax.swing.JLabel();
         btnRemoverMorador = new javax.swing.JButton();
+        lblRemoverMorador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Remover morador");
+        setBackground(new java.awt.Color(112, 188, 207));
         setMaximumSize(new java.awt.Dimension(697, 370));
+        setMinimumSize(new java.awt.Dimension(697, 370));
         setSize(new java.awt.Dimension(697, 370));
+
+        pnPrincipal.setBackground(new java.awt.Color(112, 188, 207));
+
+        pnFormRemove.setBackground(new java.awt.Color(112, 188, 207));
 
         cbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         cbApartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
-        lblRemoverMorador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblRemoverMorador.setText("Remover Morador");
-
-        lblMorador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblMorador.setText("Morador");
-
-        lblBloco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblBloco.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblBloco.setForeground(new java.awt.Color(255, 255, 255));
         lblBloco.setText("Bloco");
 
-        lblApartamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblMorador.setForeground(new java.awt.Color(255, 255, 255));
+        lblMorador.setText("Morador");
+
+        lblApartamento.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblApartamento.setForeground(new java.awt.Color(255, 255, 255));
         lblApartamento.setText("Apartamento");
 
         btnRemoverMorador.setText("Remover");
@@ -72,52 +80,84 @@ public class frmRemoveMorador extends javax.swing.JFrame {
             }
         });
 
+        lblRemoverMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblRemoverMorador.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemoverMorador.setText("Remover Morador");
+
+        javax.swing.GroupLayout pnFormRemoveLayout = new javax.swing.GroupLayout(pnFormRemove);
+        pnFormRemove.setLayout(pnFormRemoveLayout);
+        pnFormRemoveLayout.setHorizontalGroup(
+            pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                            .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMorador))
+                            .addGap(18, 18, 18)
+                            .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblBloco)
+                                .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblApartamento)
+                                .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                            .addComponent(btnRemoverMorador)
+                            .addGap(26, 26, 26)))
+                    .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(lblRemoverMorador)))
+                .addContainerGap())
+        );
+        pnFormRemoveLayout.setVerticalGroup(
+            pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblRemoverMorador)
+                .addGap(34, 34, 34)
+                .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBloco)
+                    .addComponent(lblApartamento)
+                    .addComponent(lblMorador))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addComponent(btnRemoverMorador)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnPrincipalLayout = new javax.swing.GroupLayout(pnPrincipal);
+        pnPrincipal.setLayout(pnPrincipalLayout);
+        pnPrincipalLayout.setHorizontalGroup(
+            pnPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnPrincipalLayout.createSequentialGroup()
+                .addContainerGap(175, Short.MAX_VALUE)
+                .addComponent(pnFormRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(180, 180, 180))
+        );
+        pnPrincipalLayout.setVerticalGroup(
+            pnPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnPrincipalLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(pnFormRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 187, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMorador))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBloco)
-                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblApartamento)
-                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(184, 184, 184))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(lblRemoverMorador))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(309, 309, 309)
-                        .addComponent(btnRemoverMorador)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(pnPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(lblRemoverMorador)
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMorador)
-                    .addComponent(lblBloco)
-                    .addComponent(lblApartamento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(btnRemoverMorador)
-                .addContainerGap(147, Short.MAX_VALUE))
+            .addComponent(pnPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -142,6 +182,7 @@ public class frmRemoveMorador extends javax.swing.JFrame {
                     boolean foiRemovido = listaMoradores.removerMorador(nome, cpf, bloco, apartamento);
                     if(foiRemovido){
                         JOptionPane.showMessageDialog(null, "Morador removido!");
+                        carregaCbBoxesRemoverMorador();
                     }else{
                         JOptionPane.showMessageDialog(null, "Morador não foi encontrado!");
                     }
@@ -209,5 +250,7 @@ public class frmRemoveMorador extends javax.swing.JFrame {
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblMorador;
     private javax.swing.JLabel lblRemoverMorador;
+    private javax.swing.JPanel pnFormRemove;
+    private javax.swing.JPanel pnPrincipal;
     // End of variables declaration//GEN-END:variables
 }

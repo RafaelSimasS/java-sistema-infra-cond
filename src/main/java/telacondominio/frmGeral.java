@@ -14,6 +14,7 @@ import multa.Multa;
 import multa.ListaMultas;
 
 import javax.swing.*;
+
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.Image;
@@ -23,6 +24,12 @@ import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Shape;
+import java.awt.geom.RoundRectangle2D;
 
 /**
  *
@@ -52,117 +59,133 @@ public class frmGeral extends javax.swing.JFrame {
 
         pnCadastro = new javax.swing.JPanel();
         pnInicio = new javax.swing.JPanel();
+        pnFormInicio = new javax.swing.JPanel();
         lblIconBemVindo = new javax.swing.JLabel();
+        lblBemVindo = new javax.swing.JLabel();
         pnCadastroMorador = new javax.swing.JPanel();
-        lblNome = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        lblCPF = new javax.swing.JLabel();
-        lblTelefone = new javax.swing.JLabel();
-        lblBloco = new javax.swing.JLabel();
-        cbBloco = new javax.swing.JComboBox<>();
-        lblApartamento = new javax.swing.JLabel();
-        cbApartamento = new javax.swing.JComboBox<>();
-        lblCadastroMorador = new javax.swing.JLabel();
+        pnFormMorador = new javax.swing.JPanel();
         btnCadastrarMorador = new javax.swing.JButton();
-        txtCPF = new javax.swing.JFormattedTextField();
-        txtTelefone = new javax.swing.JFormattedTextField();
+        txtNome = new javax.swing.JTextField();
         btnCancelarMorador = new javax.swing.JButton();
+        txtTelefone = new javax.swing.JFormattedTextField();
+        cbApartamento = new javax.swing.JComboBox<>();
+        lblCPF = new javax.swing.JLabel();
+        lblApartamento = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JFormattedTextField();
         btnRemoverMorador = new javax.swing.JButton();
+        cbBloco = new javax.swing.JComboBox<>();
+        lblBloco = new javax.swing.JLabel();
+        lblCadastroMorador = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblTelefone = new javax.swing.JLabel();
         pnCadastroAdm = new javax.swing.JPanel();
+        pnFormAdm = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        pasSenha = new javax.swing.JPasswordField();
-        btnCriar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        lblCadastroAdiministrador = new javax.swing.JLabel();
+        btnCriar = new javax.swing.JButton();
+        txtUsuario = new javax.swing.JTextField();
         btnRemoverAdm = new javax.swing.JButton();
+        pasSenha = new javax.swing.JPasswordField();
+        lblCadastroAdiministrador = new javax.swing.JLabel();
         pnCadastroMulta = new javax.swing.JPanel();
-        cbMoradores = new javax.swing.JComboBox<>();
+        pnFormMulta = new javax.swing.JPanel();
+        lblValor = new javax.swing.JLabel();
+        lblCadastroMulta = new javax.swing.JLabel();
         lblMorador = new javax.swing.JLabel();
-        lblValorMulta = new javax.swing.JLabel();
+        cbMoradores = new javax.swing.JComboBox<>();
+        btnCadastrarMulta = new javax.swing.JButton();
+        txtfData = new javax.swing.JFormattedTextField();
         cbInfracao = new javax.swing.JComboBox<>();
         lblInfracao = new javax.swing.JLabel();
-        lblCadastroMulta = new javax.swing.JLabel();
-        btnCadastrarMulta = new javax.swing.JButton();
-        lblValor = new javax.swing.JLabel();
+        lblValorMulta = new javax.swing.JLabel();
         lblData = new javax.swing.JLabel();
-        txtfData = new javax.swing.JFormattedTextField();
         pnTabelaMultas = new javax.swing.JPanel();
+        pnMultaTabelaForm = new javax.swing.JPanel();
         lblTabelaMultas = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbMultas = new javax.swing.JTable();
+        pnCadastroInfracao = new javax.swing.JPanel();
+        pnFormInfra = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbInfracao = new javax.swing.JTable();
+        pnFormInfraFields = new javax.swing.JPanel();
+        txtInfraNome = new javax.swing.JTextField();
+        lblCadastroInfra = new javax.swing.JLabel();
+        lblInfraNome = new javax.swing.JLabel();
+        btnRemover1 = new javax.swing.JButton();
+        btnAdicionarInfra = new javax.swing.JButton();
+        txtInfraValor = new javax.swing.JTextField();
+        lblInfraValor = new javax.swing.JLabel();
         menubarMenu = new javax.swing.JMenuBar();
         mInicio = new javax.swing.JMenu();
         mCadastros = new javax.swing.JMenu();
         mmCadastroMorador = new javax.swing.JMenuItem();
         mmCadastroAdministrador = new javax.swing.JMenuItem();
         mGereInfra = new javax.swing.JMenu();
+        mmCadastrarInfração = new javax.swing.JMenuItem();
         mmCadastrarMulta = new javax.swing.JMenuItem();
         mmTabelaMultas = new javax.swing.JMenuItem();
         mSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
-        setResizable(false);
+        setMinimumSize(new java.awt.Dimension(714, 345));
+        setPreferredSize(new java.awt.Dimension(748, 385));
+        setSize(new java.awt.Dimension(777, 485));
 
         pnCadastro.setLayout(new java.awt.CardLayout());
 
-        pnInicio.setBackground(new java.awt.Color(218, 218, 218));
+        pnInicio.setBackground(new java.awt.Color(112, 188, 207));
 
-        lblIconBemVindo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacondominio/iconBemVindo.png"))); // NOI18N
+        pnFormInicio.setBackground(new java.awt.Color(112, 188, 207));
+
+        lblIconBemVindo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacondominio/iconNome.png"))); // NOI18N
+
+        lblBemVindo.setFont(new java.awt.Font("Sitka Small", 0, 48)); // NOI18N
+        lblBemVindo.setForeground(new java.awt.Color(255, 255, 255));
+        lblBemVindo.setText("Bem-Vindo");
+
+        javax.swing.GroupLayout pnFormInicioLayout = new javax.swing.GroupLayout(pnFormInicio);
+        pnFormInicio.setLayout(pnFormInicioLayout);
+        pnFormInicioLayout.setHorizontalGroup(
+            pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblIconBemVindo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(lblBemVindo)
+                .addContainerGap())
+        );
+        pnFormInicioLayout.setVerticalGroup(
+            pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormInicioLayout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(lblBemVindo))
+            .addComponent(lblIconBemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout pnInicioLayout = new javax.swing.GroupLayout(pnInicio);
         pnInicio.setLayout(pnInicioLayout);
         pnInicioLayout.setHorizontalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnInicioLayout.createSequentialGroup()
-                .addComponent(lblIconBemVindo)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(pnFormInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         pnInicioLayout.setVerticalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblIconBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnInicioLayout.createSequentialGroup()
+                .addComponent(pnFormInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
 
         pnCadastro.add(pnInicio, "telaAdm");
 
-        lblNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblNome.setText("Nome");
-        lblNome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblNomeMouseClicked(evt);
-            }
-        });
+        pnCadastroMorador.setBackground(new java.awt.Color(112, 188, 207));
 
-        lblCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCPF.setText("CPF");
-        lblCPF.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCPFMouseClicked(evt);
-            }
-        });
-
-        lblTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblTelefone.setText("Telefone");
-        lblTelefone.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTelefoneMouseClicked(evt);
-            }
-        });
-
-        lblBloco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblBloco.setText("Bloco");
-
-        cbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-
-        lblApartamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblApartamento.setText("Apartamento");
-
-        cbApartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-
-        lblCadastroMorador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCadastroMorador.setText("Cadastro de Morador");
+        pnFormMorador.setBackground(new java.awt.Color(112, 188, 207));
 
         btnCadastrarMorador.setText("Cadastrar");
         btnCadastrarMorador.addActionListener(new java.awt.event.ActionListener() {
@@ -171,11 +194,12 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
-        try {
-            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        btnCancelarMorador.setText("Cancelar");
+        btnCancelarMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarMoradorActionPerformed(evt);
+            }
+        });
 
         try {
             txtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("# ####-####")));
@@ -183,12 +207,26 @@ public class frmGeral extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        btnCancelarMorador.setText("Cancelar");
-        btnCancelarMorador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarMoradorActionPerformed(evt);
+        cbApartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+
+        lblCPF.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblCPF.setForeground(new java.awt.Color(255, 255, 255));
+        lblCPF.setText("CPF");
+        lblCPF.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCPFMouseClicked(evt);
             }
         });
+
+        lblApartamento.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblApartamento.setForeground(new java.awt.Color(255, 255, 255));
+        lblApartamento.setText("Apartamento");
+
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         btnRemoverMorador.setText("Remover Morador");
         btnRemoverMorador.addActionListener(new java.awt.event.ActionListener() {
@@ -197,94 +235,141 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
+        cbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+
+        lblBloco.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblBloco.setForeground(new java.awt.Color(255, 255, 255));
+        lblBloco.setText("Bloco");
+
+        lblCadastroMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblCadastroMorador.setForeground(new java.awt.Color(255, 255, 255));
+        lblCadastroMorador.setText("Cadastro de Morador");
+
+        lblNome.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblNome.setText("Nome");
+        lblNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNomeMouseClicked(evt);
+            }
+        });
+
+        lblTelefone.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblTelefone.setForeground(new java.awt.Color(255, 255, 255));
+        lblTelefone.setText("Telefone");
+        lblTelefone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTelefoneMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnFormMoradorLayout = new javax.swing.GroupLayout(pnFormMorador);
+        pnFormMorador.setLayout(pnFormMoradorLayout);
+        pnFormMoradorLayout.setHorizontalGroup(
+            pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                            .addComponent(btnRemoverMorador)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelarMorador)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCadastrarMorador))
+                        .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                            .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                                    .addComponent(lblCPF)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFormMoradorLayout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(lblNome)
+                                    .addGap(38, 38, 38)))
+                            .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                            .addGap(3, 3, 3)
+                            .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTelefone)
+                                .addComponent(lblBloco))
+                            .addGap(18, 18, 18)
+                            .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(58, 58, 58)
+                                    .addComponent(lblApartamento)
+                                    .addGap(28, 28, 28)
+                                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addComponent(lblCadastroMorador))))
+        );
+        pnFormMoradorLayout.setVerticalGroup(
+            pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormMoradorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCadastroMorador)
+                .addGap(18, 18, 18)
+                .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblApartamento)
+                        .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblBloco)
+                        .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addGroup(pnFormMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrarMorador)
+                    .addComponent(btnCancelarMorador)
+                    .addComponent(btnRemoverMorador))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnCadastroMoradorLayout = new javax.swing.GroupLayout(pnCadastroMorador);
         pnCadastroMorador.setLayout(pnCadastroMoradorLayout);
         pnCadastroMoradorLayout.setHorizontalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtCPF)))
-                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblBloco))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                        .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                                .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(lblApartamento)
-                                .addGap(32, 32, 32)
-                                .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtTelefone)))
-                    .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                        .addComponent(btnRemoverMorador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelarMorador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCadastrarMorador)))
-                .addContainerGap(232, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMoradorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCadastroMorador)
-                .addGap(239, 239, 239))
+                .addContainerGap(197, Short.MAX_VALUE)
+                .addComponent(pnFormMorador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(215, 215, 215))
         );
         pnCadastroMoradorLayout.setVerticalGroup(
             pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastroMoradorLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(lblCadastroMorador)
-                .addGap(18, 18, 18)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblApartamento)
-                        .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblBloco)
-                        .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addGroup(pnCadastroMoradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrarMorador)
-                    .addComponent(btnCancelarMorador)
-                    .addComponent(btnRemoverMorador))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addComponent(pnFormMorador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroMorador, "telaMorador");
 
-        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pnCadastroAdm.setBackground(new java.awt.Color(112, 188, 207));
+
+        pnFormAdm.setBackground(new java.awt.Color(112, 188, 207));
+
+        lblUsuario.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuario.setText("Usuário: ");
 
-        lblSenha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblSenha.setForeground(new java.awt.Color(255, 255, 255));
         lblSenha.setText("Senha:");
-
-        btnCriar.setText("Criar");
-        btnCriar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-        btnCriar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCriarActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -294,8 +379,13 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
-        lblCadastroAdiministrador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblCadastroAdiministrador.setText("Cadastro de Adiministrador");
+        btnCriar.setText("Criar");
+        btnCriar.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        btnCriar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarActionPerformed(evt);
+            }
+        });
 
         btnRemoverAdm.setText("Remover Adimin");
         btnRemoverAdm.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -305,73 +395,89 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnCadastroAdmLayout = new javax.swing.GroupLayout(pnCadastroAdm);
-        pnCadastroAdm.setLayout(pnCadastroAdmLayout);
-        pnCadastroAdmLayout.setHorizontalGroup(
-            pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroAdmLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCadastroAdiministrador)
-                .addGap(202, 202, 202))
-            .addGroup(pnCadastroAdmLayout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+        lblCadastroAdiministrador.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblCadastroAdiministrador.setForeground(new java.awt.Color(255, 255, 255));
+        lblCadastroAdiministrador.setText("Cadastro de Adiministrador");
+
+        javax.swing.GroupLayout pnFormAdmLayout = new javax.swing.GroupLayout(pnFormAdm);
+        pnFormAdm.setLayout(pnFormAdmLayout);
+        pnFormAdmLayout.setHorizontalGroup(
+            pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormAdmLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormAdmLayout.createSequentialGroup()
                         .addComponent(btnRemoverAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCriar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnCadastroAdmLayout.createSequentialGroup()
-                        .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormAdmLayout.createSequentialGroup()
+                        .addGroup(pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUsuario)
                             .addComponent(lblSenha))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtUsuario)
-                            .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(231, Short.MAX_VALUE))
+                            .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnFormAdmLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(lblCadastroAdiministrador)))
+                .addContainerGap())
+        );
+        pnFormAdmLayout.setVerticalGroup(
+            pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormAdmLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCadastroAdiministrador)
+                .addGap(18, 18, 18)
+                .addGroup(pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSenha)
+                    .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(pnFormAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCriar)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnRemoverAdm))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnCadastroAdmLayout = new javax.swing.GroupLayout(pnCadastroAdm);
+        pnCadastroAdm.setLayout(pnCadastroAdmLayout);
+        pnCadastroAdmLayout.setHorizontalGroup(
+            pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnCadastroAdmLayout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addComponent(pnFormAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(173, 173, 173))
         );
         pnCadastroAdmLayout.setVerticalGroup(
             pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastroAdmLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lblCadastroAdiministrador)
-                .addGap(18, 18, 18)
-                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUsuario)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSenha)
-                    .addComponent(pasSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(pnCadastroAdmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCriar)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnRemoverAdm))
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(pnFormAdm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroAdm, "card4");
 
-        lblMorador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblMorador.setText("Morador");
+        pnCadastroMulta.setBackground(new java.awt.Color(112, 188, 207));
 
-        lblValorMulta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblValorMulta.setText("Valor da Multa");
+        pnFormMulta.setBackground(new java.awt.Color(112, 188, 207));
 
-        cbInfracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbInfracaoActionPerformed(evt);
-            }
-        });
-
-        lblInfracao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblInfracao.setText("Infração");
+        lblValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
 
         lblCadastroMulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblCadastroMulta.setForeground(new java.awt.Color(255, 255, 255));
         lblCadastroMulta.setText("Cadastro de Multa");
+
+        lblMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblMorador.setForeground(new java.awt.Color(255, 255, 255));
+        lblMorador.setText("Morador");
 
         btnCadastrarMulta.setText("Cadastrar Multa");
         btnCadastrarMulta.addActionListener(new java.awt.event.ActionListener() {
@@ -379,11 +485,6 @@ public class frmGeral extends javax.swing.JFrame {
                 btnCadastrarMultaActionPerformed(evt);
             }
         });
-
-        lblValor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
-
-        lblData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblData.setText("Data");
 
         try {
             txtfData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -396,68 +497,104 @@ public class frmGeral extends javax.swing.JFrame {
             }
         });
 
+        cbInfracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbInfracaoActionPerformed(evt);
+            }
+        });
+
+        lblInfracao.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblInfracao.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfracao.setText("Infração");
+
+        lblValorMulta.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblValorMulta.setForeground(new java.awt.Color(255, 255, 255));
+        lblValorMulta.setText("Valor da Multa");
+
+        lblData.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblData.setForeground(new java.awt.Color(255, 255, 255));
+        lblData.setText("Data");
+
+        javax.swing.GroupLayout pnFormMultaLayout = new javax.swing.GroupLayout(pnFormMulta);
+        pnFormMulta.setLayout(pnFormMultaLayout);
+        pnFormMultaLayout.setHorizontalGroup(
+            pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormMultaLayout.createSequentialGroup()
+                .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormMultaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnFormMultaLayout.createSequentialGroup()
+                                .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblMorador)
+                                    .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblValorMulta)
+                                    .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblInfracao)))
+                            .addGroup(pnFormMultaLayout.createSequentialGroup()
+                                .addGap(222, 222, 222)
+                                .addComponent(lblCadastroMulta))
+                            .addComponent(lblData)))
+                    .addGroup(pnFormMultaLayout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(btnCadastrarMulta)))
+                .addContainerGap())
+        );
+        pnFormMultaLayout.setVerticalGroup(
+            pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormMultaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCadastroMulta)
+                .addGap(55, 55, 55)
+                .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMorador)
+                    .addComponent(lblValorMulta)
+                    .addComponent(lblInfracao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnFormMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbMoradores)
+                    .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(lblData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCadastrarMulta)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnCadastroMultaLayout = new javax.swing.GroupLayout(pnCadastroMulta);
         pnCadastroMulta.setLayout(pnCadastroMultaLayout);
         pnCadastroMultaLayout.setHorizontalGroup(
             pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroMultaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCadastroMulta)
-                .addGap(265, 265, 265))
             .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMorador)
-                    .addComponent(lblData)
-                    .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValorMulta)
-                            .addComponent(lblValor, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblInfracao)))
-                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(btnCadastrarMulta)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(pnFormMulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(48, 48, 48))
         );
         pnCadastroMultaLayout.setVerticalGroup(
             pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(lblCadastroMulta)
-                        .addGap(58, 58, 58)
-                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMorador)
-                            .addComponent(lblValorMulta))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnCadastroMultaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblValor, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                            .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnCadastroMultaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblInfracao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbInfracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(lblData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtfData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(btnCadastrarMulta)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(73, 73, 73)
+                .addComponent(pnFormMulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroMulta, "card5");
 
+        pnTabelaMultas.setBackground(new java.awt.Color(112, 188, 207));
+
+        pnMultaTabelaForm.setBackground(new java.awt.Color(112, 188, 207));
+
         lblTabelaMultas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTabelaMultas.setForeground(new java.awt.Color(255, 255, 255));
         lblTabelaMultas.setText("Tabela de Multas");
 
         tbMultas.setModel(new javax.swing.table.DefaultTableModel(
@@ -473,31 +610,176 @@ public class frmGeral extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbMultas);
 
+        javax.swing.GroupLayout pnMultaTabelaFormLayout = new javax.swing.GroupLayout(pnMultaTabelaForm);
+        pnMultaTabelaForm.setLayout(pnMultaTabelaFormLayout);
+        pnMultaTabelaFormLayout.setHorizontalGroup(
+            pnMultaTabelaFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTabelaMultas)
+                .addGap(290, 290, 290))
+            .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        pnMultaTabelaFormLayout.setVerticalGroup(
+            pnMultaTabelaFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTabelaMultas)
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout pnTabelaMultasLayout = new javax.swing.GroupLayout(pnTabelaMultas);
         pnTabelaMultas.setLayout(pnTabelaMultasLayout);
         pnTabelaMultasLayout.setHorizontalGroup(
             pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnTabelaMultasLayout.createSequentialGroup()
-                .addGroup(pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnTabelaMultasLayout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addComponent(lblTabelaMultas))
-                    .addGroup(pnTabelaMultasLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+            .addComponent(pnMultaTabelaForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         pnTabelaMultasLayout.setVerticalGroup(
             pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTabelaMultasLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblTabelaMultas)
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(pnMultaTabelaForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnTabelaMultas, "card6");
+
+        pnCadastroInfracao.setBackground(new java.awt.Color(112, 188, 207));
+
+        pnFormInfra.setBackground(new java.awt.Color(112, 188, 207));
+
+        tbInfracao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Valor"
+            }
+        ));
+        tbInfracao.setToolTipText("");
+        jScrollPane3.setViewportView(tbInfracao);
+
+        pnFormInfraFields.setBackground(new java.awt.Color(112, 188, 207));
+
+        lblCadastroInfra.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblCadastroInfra.setForeground(new java.awt.Color(255, 255, 255));
+        lblCadastroInfra.setText("Cadastro de Infrações");
+
+        lblInfraNome.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblInfraNome.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfraNome.setText("Infração");
+
+        btnRemover1.setText("Remover");
+        btnRemover1.setMinimumSize(new java.awt.Dimension(714, 345));
+        btnRemover1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemover1ActionPerformed(evt);
+            }
+        });
+
+        btnAdicionarInfra.setText("Adicionar");
+        btnAdicionarInfra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarInfraActionPerformed(evt);
+            }
+        });
+
+        lblInfraValor.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        lblInfraValor.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfraValor.setText("Valor");
+
+        javax.swing.GroupLayout pnFormInfraFieldsLayout = new javax.swing.GroupLayout(pnFormInfraFields);
+        pnFormInfraFields.setLayout(pnFormInfraFieldsLayout);
+        pnFormInfraFieldsLayout.setHorizontalGroup(
+            pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormInfraFieldsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnFormInfraFieldsLayout.createSequentialGroup()
+                        .addGroup(pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblInfraNome)
+                            .addComponent(txtInfraNome, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblInfraValor)
+                            .addComponent(txtInfraValor, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnFormInfraFieldsLayout.createSequentialGroup()
+                                .addComponent(btnRemover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAdicionarInfra))))
+                    .addGroup(pnFormInfraFieldsLayout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(lblCadastroInfra)))
+                .addContainerGap())
+        );
+        pnFormInfraFieldsLayout.setVerticalGroup(
+            pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormInfraFieldsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCadastroInfra)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnFormInfraFieldsLayout.createSequentialGroup()
+                        .addComponent(lblInfraValor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtInfraValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnFormInfraFieldsLayout.createSequentialGroup()
+                        .addComponent(lblInfraNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtInfraNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(pnFormInfraFieldsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdicionarInfra)
+                    .addComponent(btnRemover1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout pnFormInfraLayout = new javax.swing.GroupLayout(pnFormInfra);
+        pnFormInfra.setLayout(pnFormInfraLayout);
+        pnFormInfraLayout.setHorizontalGroup(
+            pnFormInfraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormInfraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(pnFormInfraLayout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(pnFormInfraFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        pnFormInfraLayout.setVerticalGroup(
+            pnFormInfraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnFormInfraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnFormInfraFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
+        );
+
+        javax.swing.GroupLayout pnCadastroInfracaoLayout = new javax.swing.GroupLayout(pnCadastroInfracao);
+        pnCadastroInfracao.setLayout(pnCadastroInfracaoLayout);
+        pnCadastroInfracaoLayout.setHorizontalGroup(
+            pnCadastroInfracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroInfracaoLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addComponent(pnFormInfra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(79, 79, 79))
+        );
+        pnCadastroInfracaoLayout.setVerticalGroup(
+            pnCadastroInfracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnCadastroInfracaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnFormInfra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        pnCadastro.add(pnCadastroInfracao, "card7");
 
         mInicio.setText("Início");
         mInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -531,7 +813,16 @@ public class frmGeral extends javax.swing.JFrame {
 
         menubarMenu.add(mCadastros);
 
-        mGereInfra.setText("Gerenciamento de Infrações");
+        mGereInfra.setText("Gerenciamento de Infrações/Multas");
+
+        mmCadastrarInfração.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mmCadastrarInfração.setText("Cadastrar Infração");
+        mmCadastrarInfração.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mmCadastrarInfraçãoActionPerformed(evt);
+            }
+        });
+        mGereInfra.add(mmCadastrarInfração);
 
         mmCadastrarMulta.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mmCadastrarMulta.setText("Cadastrar Multa");
@@ -578,6 +869,22 @@ public class frmGeral extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
+
+
+    public class RoundedButton extends JButton {
+        @Override
+        protected void paintComponent(Graphics g) {
+            // Cria um objeto de formato redondo para as bordas do botão
+            Shape border = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
+
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setColor(getBackground());
+            g2.fill(border);
+
+            super.paintComponent(g);
+        }
+    }
     private boolean checarCampoVazioOuInvalido(String campo){
         // checa se o campo em questão comecça com o caractere espaço em branco ou se está vazio
         return campo.equals("") || campo.startsWith(" ");
@@ -604,8 +911,14 @@ public class frmGeral extends javax.swing.JFrame {
     private void limpaCamposMorador(){
         txtNome.setText("");
         txtCPF.setText("");
+        txtCPF.setValue(null);
         txtTelefone.setText("");
+        txtTelefone.setValue(null);
         
+    }
+    private void limpaCamposInfracao(){
+        txtInfraNome.setText("");
+        txtInfraValor.setText("");
     }
     private void limpaCamposGeral(){
         limpaCamposAdm();
@@ -774,23 +1087,17 @@ public class frmGeral extends javax.swing.JFrame {
                 if(listaMoradoresInc.adicionarMorador(novoMorador)){
                     JOptionPane.showMessageDialog(null, "Morador cadastrado com sucesso!", 
                                                 "Morador Cadastrado.", JOptionPane.INFORMATION_MESSAGE);
-                    txtNome.setText("");
-                    txtCPF.setText("");
-                    txtTelefone.setText("");
+                    limpaCamposMorador();
                     txtNome.requestFocus();
                 }else{
                     JOptionPane.showMessageDialog(null, 
               "Já existe um morador no mesmo apartamento ou com mesma informações cadastradas!",
               "Cadastro Inválido", HEIGHT);
-                    txtNome.setText("");
-                    txtCPF.setText("");
-                    txtTelefone.setText("");
+                    limpaCamposMorador();
                     txtNome.requestFocus();
                 }
             }else{
-                txtNome.setText("");
-                txtCPF.setText("");
-                txtTelefone.setText("");
+                limpaCamposMorador();
                 txtNome.requestFocus();
             }
         }
@@ -803,8 +1110,7 @@ public class frmGeral extends javax.swing.JFrame {
             int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
                     "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtUsuario.setText("");
-                pasSenha.setText("");
+                limpaCamposAdm();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnInicio);
                 pnCadastro.repaint();
@@ -817,9 +1123,7 @@ public class frmGeral extends javax.swing.JFrame {
             int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?\nHá alterações em um dos campos.",
                     "Cancelar cadastro",JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION){
-                txtNome.setText("");
-                txtCPF.setText("");
-                txtTelefone.setText("");
+                limpaCamposMorador();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnInicio);
                 pnCadastro.repaint();
@@ -895,7 +1199,42 @@ public class frmGeral extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cbInfracaoActionPerformed
+    private boolean dataIncorreta(String data){
+        String[] partesData = data.split("/");
+        if(partesData.length != 3){
+            return false;
+        }
+        int diaInt;
+        int mesInt;
+        int anoInt;
+        String dia = partesData[0];
+        String mes = partesData[1];
+        String ano = partesData[2];
+        if (dia.isEmpty() || mes.isEmpty() || ano.isEmpty()) {
+            // Alguma das partes da data está vazia
+            return true;
+        }
+        // Verificar se as partes da data são incompletas
+        if (dia.equals("00") || mes.equals("00") || ano.equals("0000")) {
+            return true;
+        }
+        
+        // Verificar se as partes da data são válidas
+        try{
+            diaInt = Integer.parseInt(dia);
+            mesInt = Integer.parseInt(mes);
+            anoInt = Integer.parseInt(ano);
+            
+        }catch(NumberFormatException e){
+            return true;
+        }
 
+        if(diaInt < 1 || diaInt > 31 || mesInt < 1 || mesInt > 12 || anoInt < 1) {
+            return true;
+        }
+        return false;
+        
+    }
     private void btnCadastrarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMultaActionPerformed
         // TODO add your handling code here:
         String nomeCpfSelecionado = (String) cbMoradores.getSelectedItem();
@@ -914,41 +1253,53 @@ public class frmGeral extends javax.swing.JFrame {
                     ".\nValor: R$"+valor+".\nData: "+data,
                     "Confirmação",JOptionPane.YES_NO_OPTION);
                 if (flag == JOptionPane.YES_OPTION){
-                    ListaMoradores listaMoradores = new ListaMoradores();
-                    List<Morador> moradores = listaMoradores.getMoradores();
-
-                    ListaInfracoes listaInfracoes = new ListaInfracoes();
-                    List<Infracao> infracoes = listaInfracoes.getInfracoes();
-                    ListaMultas listaMultas = new ListaMultas();
-
-                    for(Morador morador : moradores){
-                        if(morador.getNome().equals(nome) && morador.getCpf().equals(cpf)){
-                            moradorSelecionado = morador;
-                            break;
-                        }
-                    }
-                    for(Infracao infracao : infracoes){
-                        if(infracao.getNomeInfracao().equals(nomeInfracaoSelecionada)){
-                            infracaoSelecionada = infracao;
-                            break;
-                        }
-                    }
-                    if(moradorSelecionado != null && infracaoSelecionada != null){
-                        Multa novaMulta = new Multa(moradorSelecionado, infracaoSelecionada, data);
-                        try{
-                            listaMultas.adicionarMulta(novaMulta);
-                            JOptionPane.showMessageDialog(null, "Multa cadastrada com sucesso!", 
-                                                "Multa Cadastrada.", JOptionPane.INFORMATION_MESSAGE);
-                        }catch(Exception e){
-                            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
-                                + "Morador ou Infração não foi encontrado.", 
-                                "Erro Interno", JOptionPane.ERROR_MESSAGE);
-                        }
+                    if(dataIncorreta(data)){
+                        JOptionPane.showMessageDialog(null, "Data Inválida.", "Erro de data", JOptionPane.ERROR_MESSAGE);
+                        txtfData.requestFocus();
                     }else{
-                        JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
-                                + "Morador ou Infração não foi encontrado.", 
-                                "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+                        ListaMoradores listaMoradores = new ListaMoradores();
+                        List<Morador> moradores = listaMoradores.getMoradores();
+
+                        ListaInfracoes listaInfracoes = new ListaInfracoes();
+                        List<Infracao> infracoes = listaInfracoes.getInfracoes();
+                        ListaMultas listaMultas = new ListaMultas();
+
+                        for(Morador morador : moradores){
+                            if(morador.getNome().equals(nome) && morador.getCpf().equals(cpf)){
+                                moradorSelecionado = morador;
+                                break;
+                            }
+                        }
+                        for(Infracao infracao : infracoes){
+                            if(infracao.getNomeInfracao().equals(nomeInfracaoSelecionada)){
+                                infracaoSelecionada = infracao;
+                                break;
+                            }
+                        }
+                        if(moradorSelecionado != null && infracaoSelecionada != null){
+                            Multa novaMulta = new Multa(moradorSelecionado, infracaoSelecionada, data);
+                            try{
+                                listaMultas.adicionarMulta(novaMulta);
+                                JOptionPane.showMessageDialog(null, "Multa cadastrada com sucesso!", 
+                                                    "Multa Cadastrada.", JOptionPane.INFORMATION_MESSAGE);
+                                txtfData.setText("");
+                                txtfData.setValue(null);
+                            }catch(Exception e){
+                                JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
+                                    + "Morador ou Infração não foi encontrado.", 
+                                    "Erro Interno", JOptionPane.ERROR_MESSAGE);
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a multa.\n"
+                                    + "Morador ou Infração não foi encontrado.", 
+                                    "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+                        }
+                        
                     }
+                }else{
+                    txtfData.setText("");
+                    txtfData.setValue(null);
+                    
                 }
         }catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "Há campos vazios.", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1029,6 +1380,89 @@ public class frmGeral extends javax.swing.JFrame {
         pnCadastro.revalidate();
         
     }//GEN-LAST:event_mmTabelaMultasActionPerformed
+    private void carregarInfracoesTabela(){
+        ListaInfracoes listaInfracoes = new ListaInfracoes();
+        // Define um coluna para a tabela
+        String[] colunas = {"Nome", "Valor"};
+        
+        DefaultTableModel tableModel = new DefaultTableModel(colunas, 0){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        List<Infracao> infracoes = listaInfracoes.getInfracoes();
+        for (Infracao infracao : infracoes) {
+            
+            Object[] rowData = {
+                    infracao.getNomeInfracao(),
+                    infracao.getValor()
+                
+            };
+            tableModel.addRow(rowData);
+        }
+        tbInfracao.setModel(tableModel);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+        tbInfracao.setRowSorter(sorter);
+    }
+    private void mmCadastrarInfraçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmCadastrarInfraçãoActionPerformed
+        // TODO add your handling code here:
+        carregarInfracoesTabela();
+        pnCadastro.removeAll();
+        pnCadastro.add(pnCadastroInfracao);
+        pnCadastro.repaint();
+        pnCadastro.revalidate();
+    }//GEN-LAST:event_mmCadastrarInfraçãoActionPerformed
+
+    private void btnAdicionarInfraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarInfraActionPerformed
+        // TODO add your handling code here:
+        try{
+            double valor = Double.parseDouble(txtInfraValor.getText());
+            String nome = txtInfraNome.getText();
+            if( nome.isEmpty() || nome.isBlank()){
+                JOptionPane.showMessageDialog(null, "Não foi possível adicionar a infração.\n"
+                                + "Campo nome vazio.", 
+                                "Erro", JOptionPane.ERROR_MESSAGE);
+                
+            }else{
+                int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente criar a seguinte infração?\n"
+                        + "Infração: "+nome+".\nValor: "+valor+".",
+                        "Completar cadastro",JOptionPane.YES_NO_OPTION);
+                if (flag == JOptionPane.YES_OPTION){
+                    ListaInfracoes listaInfracoes = new ListaInfracoes();
+                    Infracao infracao = new Infracao(nome, valor);
+                    boolean resultado = listaInfracoes.adicionarInfracao(infracao);
+                    if(resultado){
+                        JOptionPane.showMessageDialog(null, "Infração cadastrada com sucesso!", 
+                                                "Infração Cadastrada.", JOptionPane.INFORMATION_MESSAGE);
+                        limpaCamposInfracao();
+                        txtInfraNome.requestFocus();
+                        carregarInfracoesTabela();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Já existe uma infração com mesmo nome cadastrada!", 
+                                                "Falha ao cadastrar.", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }else{
+                    limpaCamposInfracao();
+                    carregarInfracoesTabela();
+                    txtInfraNome.requestFocus();
+                }
+            }
+            
+        }catch( NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Não foi possível adicionar a infração.\n"
+                                + "Caractere Inválido no campo valor.", 
+                                "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAdicionarInfraActionPerformed
+
+    private void btnRemover1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemover1ActionPerformed
+        // TODO add your handling code here:
+        frmRemoverInfracao frameRemoverInfra = new frmRemoverInfracao();
+        frameRemoverInfra.carregaCbBoxesRemoverInfracao();
+        frameRemoverInfra.setVisible(true);
+    }//GEN-LAST:event_btnRemover1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1066,11 +1500,13 @@ public class frmGeral extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionarInfra;
     private javax.swing.JButton btnCadastrarMorador;
     private javax.swing.JButton btnCadastrarMulta;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCancelarMorador;
     private javax.swing.JButton btnCriar;
+    private javax.swing.JButton btnRemover1;
     private javax.swing.JButton btnRemoverAdm;
     private javax.swing.JButton btnRemoverMorador;
     private javax.swing.JComboBox<String> cbApartamento;
@@ -1078,14 +1514,19 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbInfracao;
     private javax.swing.JComboBox<String> cbMoradores;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblApartamento;
+    private javax.swing.JLabel lblBemVindo;
     private javax.swing.JLabel lblBloco;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCadastroAdiministrador;
+    private javax.swing.JLabel lblCadastroInfra;
     private javax.swing.JLabel lblCadastroMorador;
     private javax.swing.JLabel lblCadastroMulta;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblIconBemVindo;
+    private javax.swing.JLabel lblInfraNome;
+    private javax.swing.JLabel lblInfraValor;
     private javax.swing.JLabel lblInfracao;
     private javax.swing.JLabel lblMorador;
     private javax.swing.JLabel lblNome;
@@ -1100,6 +1541,7 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JMenu mInicio;
     private javax.swing.JMenu mSair;
     private javax.swing.JMenuBar menubarMenu;
+    private javax.swing.JMenuItem mmCadastrarInfração;
     private javax.swing.JMenuItem mmCadastrarMulta;
     private javax.swing.JMenuItem mmCadastroAdministrador;
     private javax.swing.JMenuItem mmCadastroMorador;
@@ -1107,12 +1549,23 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JPasswordField pasSenha;
     private javax.swing.JPanel pnCadastro;
     private javax.swing.JPanel pnCadastroAdm;
+    private javax.swing.JPanel pnCadastroInfracao;
     private javax.swing.JPanel pnCadastroMorador;
     private javax.swing.JPanel pnCadastroMulta;
+    private javax.swing.JPanel pnFormAdm;
+    private javax.swing.JPanel pnFormInfra;
+    private javax.swing.JPanel pnFormInfraFields;
+    private javax.swing.JPanel pnFormInicio;
+    private javax.swing.JPanel pnFormMorador;
+    private javax.swing.JPanel pnFormMulta;
     private javax.swing.JPanel pnInicio;
+    private javax.swing.JPanel pnMultaTabelaForm;
     private javax.swing.JPanel pnTabelaMultas;
+    private javax.swing.JTable tbInfracao;
     private javax.swing.JTable tbMultas;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JTextField txtInfraNome;
+    private javax.swing.JTextField txtInfraValor;
     private javax.swing.JTextField txtNome;
     private javax.swing.JFormattedTextField txtTelefone;
     private javax.swing.JTextField txtUsuario;
