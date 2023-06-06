@@ -92,7 +92,7 @@ public class frmLogin extends javax.swing.JFrame {
         pnPrincipal.setBackground(new java.awt.Color(112, 188, 207));
 
         lblIcon.setBackground(new java.awt.Color(51, 51, 51));
-        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacondominio/iconNome.png"))); // NOI18N
+        lblIcon.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sparq\\OneDrive\\Documentos\\NetBeansProjects\\sistemaInfraLp\\src\\main\\resources\\iconNome.png")); // NOI18N
 
         pnFormLogin.setBackground(new java.awt.Color(112, 188, 207));
 
@@ -126,7 +126,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         pnLabelUser.setBackground(new java.awt.Color(112, 188, 207));
 
-        lblIconPerson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacondominio/personIcon.png"))); // NOI18N
+        lblIconPerson.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sparq\\OneDrive\\Documentos\\NetBeansProjects\\sistemaInfraLp\\src\\main\\resources\\personIcon.png")); // NOI18N
 
         lblUsuario.setBackground(new java.awt.Color(153, 153, 153));
         lblUsuario.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
@@ -195,7 +195,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         pnLabaelSenha.setBackground(new java.awt.Color(112, 188, 207));
 
-        lblIconLock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacondominio/lockIcon.png"))); // NOI18N
+        lblIconLock.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sparq\\OneDrive\\Documentos\\NetBeansProjects\\sistemaInfraLp\\src\\main\\resources\\lockIcon.png")); // NOI18N
         lblIconLock.setAutoscrolls(true);
 
         lblSenha.setBackground(new java.awt.Color(153, 153, 153));
