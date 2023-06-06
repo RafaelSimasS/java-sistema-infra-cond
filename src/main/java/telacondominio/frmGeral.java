@@ -42,11 +42,7 @@ public class frmGeral extends javax.swing.JFrame {
      */
     public frmGeral() {
         initComponents();
-        Icon i = lblIconBemVindo.getIcon();
-        ImageIcon icon = (ImageIcon) i;
-        Image image = icon.getImage().getScaledInstance(lblIconBemVindo.getWidth(), lblIconBemVindo.getHeight(),
-                Image.SCALE_SMOOTH);
-        lblIconBemVindo.setIcon(new ImageIcon(image));
+        
     }
 
     /**
@@ -62,7 +58,6 @@ public class frmGeral extends javax.swing.JFrame {
         pnCadastro = new javax.swing.JPanel();
         pnInicio = new javax.swing.JPanel();
         pnFormInicio = new javax.swing.JPanel();
-        lblIconBemVindo = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -121,6 +116,7 @@ public class frmGeral extends javax.swing.JFrame {
         btnAdicionarInfra = new javax.swing.JButton();
         txtInfraValor = new javax.swing.JTextField();
         lblInfraValor = new javax.swing.JLabel();
+        btnAtualizar = new javax.swing.JButton();
         menubarMenu = new javax.swing.JMenuBar();
         mInicio = new javax.swing.JMenu();
         mCadastros = new javax.swing.JMenu();
@@ -144,8 +140,6 @@ public class frmGeral extends javax.swing.JFrame {
 
         pnFormInicio.setBackground(new java.awt.Color(112, 188, 207));
 
-        lblIconBemVindo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sparq\\OneDrive\\Documentos\\NetBeansProjects\\sistemaInfraLp\\src\\main\\resources\\iconNome.png")); // NOI18N
-
         lblBemVindo.setFont(new java.awt.Font("Sitka Small", 0, 48)); // NOI18N
         lblBemVindo.setForeground(new java.awt.Color(255, 255, 255));
         lblBemVindo.setText("Bem-Vindo");
@@ -164,9 +158,7 @@ public class frmGeral extends javax.swing.JFrame {
         pnFormInicioLayout.setHorizontalGroup(
             pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFormInicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblIconBemVindo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
@@ -176,32 +168,29 @@ public class frmGeral extends javax.swing.JFrame {
         pnFormInicioLayout.setVerticalGroup(
             pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFormInicioLayout.createSequentialGroup()
-                .addComponent(lblIconBemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnFormInicioLayout.createSequentialGroup()
-                .addGap(131, 131, 131)
+                .addGap(44, 44, 44)
                 .addComponent(lblBemVindo)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1))
         );
 
         javax.swing.GroupLayout pnInicioLayout = new javax.swing.GroupLayout(pnInicio);
         pnInicio.setLayout(pnInicioLayout);
         pnInicioLayout.setHorizontalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnInicioLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addComponent(pnFormInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+            .addGroup(pnInicioLayout.createSequentialGroup()
+                .addContainerGap(232, Short.MAX_VALUE)
+                .addComponent(pnFormInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         pnInicioLayout.setVerticalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnInicioLayout.createSequentialGroup()
-                .addComponent(pnFormInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addComponent(pnFormInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnInicio, "telaAdm");
@@ -780,7 +769,7 @@ public class frmGeral extends javax.swing.JFrame {
             .addGroup(pnFormInfraLayout.createSequentialGroup()
                 .addGap(123, 123, 123)
                 .addComponent(pnFormInfraFields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         pnFormInfraLayout.setVerticalGroup(
             pnFormInfraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -792,14 +781,23 @@ public class frmGeral extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
+        btnAtualizar.setText("Atualizar");
+        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnCadastroInfracaoLayout = new javax.swing.GroupLayout(pnCadastroInfracao);
         pnCadastroInfracao.setLayout(pnCadastroInfracaoLayout);
         pnCadastroInfracaoLayout.setHorizontalGroup(
             pnCadastroInfracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCadastroInfracaoLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addComponent(pnFormInfra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(79, 79, 79))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtualizar)
+                .addGap(24, 24, 24))
         );
         pnCadastroInfracaoLayout.setVerticalGroup(
             pnCadastroInfracaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -807,6 +805,10 @@ public class frmGeral extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pnFormInfra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(pnCadastroInfracaoLayout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(btnAtualizar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnCadastroInfracao, "card7");
@@ -899,6 +901,11 @@ public class frmGeral extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
+        // TODO add your handling code here:
+        carregarInfracoesTabela();
+    }//GEN-LAST:event_btnAtualizarActionPerformed
+
     public class RoundedButton extends JButton {
         @Override
         protected void paintComponent(Graphics g) {
@@ -936,6 +943,11 @@ public class frmGeral extends javax.swing.JFrame {
         String password = new String(pasSenha.getPassword());
         return checarCampoVazioOuInvalido(password) && checarCampoVazioOuInvalido(nome);
     }
+    private boolean checarLimpoInfracao(){
+        String nomeInfra = txtInfraNome.getText();
+        String valor = txtInfraValor.getText();
+        return checarCampoVazioOuInvalido(valor) && checarCampoVazioOuInvalido(nomeInfra);
+    }
 
     private void limpaCamposAdm() {
         txtUsuario.setText("");
@@ -959,10 +971,11 @@ public class frmGeral extends javax.swing.JFrame {
     private void limpaCamposGeral() {
         limpaCamposAdm();
         limpaCamposMorador();
+        limpaCamposInfracao();
     }
 
     private void mmCadastroMoradorActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_mmCadastroMoradorActionPerformed
-        if (checarLimpoAdm()) {
+        if (checarLimpoAdm() && checarLimpoInfracao()) {
             pnCadastro.removeAll();
             pnCadastro.add(pnCadastroMorador);
             pnCadastro.repaint();
@@ -973,6 +986,7 @@ public class frmGeral extends javax.swing.JFrame {
                     JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION) {
                 limpaCamposAdm();
+                limpaCamposInfracao();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnCadastroMorador);
                 pnCadastro.repaint();
@@ -985,7 +999,7 @@ public class frmGeral extends javax.swing.JFrame {
 
     private void mmCadastroAdministradorActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_mmCadastroAdministradorActionPerformed
         // TODO add your handling code here:
-        if (checarLimpoMorador()) {
+        if (checarLimpoMorador() && checarLimpoInfracao()) {
             pnCadastro.removeAll();
             pnCadastro.add(pnCadastroAdm);
             pnCadastro.repaint();
@@ -996,6 +1010,7 @@ public class frmGeral extends javax.swing.JFrame {
                     JOptionPane.YES_NO_OPTION);
             if (flag == JOptionPane.YES_OPTION) {
                 limpaCamposMorador();
+                limpaCamposInfracao();
                 pnCadastro.removeAll();
                 pnCadastro.add(pnCadastroAdm);
                 pnCadastro.repaint();
@@ -1203,7 +1218,7 @@ public class frmGeral extends javax.swing.JFrame {
 
     private void mmCadastrarMultaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_mmCadastrarMultaActionPerformed
         // TODO add your handling code here:
-        if (checarLimpoAdm() && checarLimpoMorador()) { // Checa se as outras telas estão limpas para poder mudar
+        if (checarLimpoAdm() && checarLimpoMorador() && checarLimpoInfracao()) { // Checa se as outras telas estão limpas para poder mudar
 
             carregaCbBoxesMultas();
             pnCadastro.removeAll();
@@ -1456,11 +1471,29 @@ public class frmGeral extends javax.swing.JFrame {
 
     private void mmCadastrarInfraçãoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_mmCadastrarInfraçãoActionPerformed
         // TODO add your handling code here:
-        carregarInfracoesTabela();
-        pnCadastro.removeAll();
-        pnCadastro.add(pnCadastroInfracao);
-        pnCadastro.repaint();
-        pnCadastro.revalidate();
+        if (checarLimpoAdm() && checarLimpoMorador()) { // Checa se as outras telas estão limpas para poder mudar
+
+            carregarInfracoesTabela();
+            pnCadastro.removeAll();
+            pnCadastro.add(pnCadastroInfracao);
+            pnCadastro.repaint();
+            pnCadastro.revalidate();
+
+        } else {
+            int flag = JOptionPane.showConfirmDialog(null,
+                    "Deseja realmente sair?\nHá alterações em um ou mais dos campos.",
+                    "Cancelar cadastro", JOptionPane.YES_NO_OPTION);
+            if (flag == JOptionPane.YES_OPTION) {
+                limpaCamposMorador();
+                limpaCamposAdm();
+                carregarInfracoesTabela();
+                pnCadastro.removeAll();
+                pnCadastro.add(pnCadastroInfracao);
+                pnCadastro.repaint();
+                pnCadastro.revalidate();
+            }
+        }
+        
     }// GEN-LAST:event_mmCadastrarInfraçãoActionPerformed
 
     private void btnAdicionarInfraActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAdicionarInfraActionPerformed
@@ -1553,6 +1586,7 @@ public class frmGeral extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionarInfra;
+    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnCadastrarMorador;
     private javax.swing.JButton btnCadastrarMulta;
     private javax.swing.JButton btnCancelar;
@@ -1578,7 +1612,6 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JLabel lblCadastroMorador;
     private javax.swing.JLabel lblCadastroMulta;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblIconBemVindo;
     private javax.swing.JLabel lblInfraNome;
     private javax.swing.JLabel lblInfraValor;
     private javax.swing.JLabel lblInfracao;

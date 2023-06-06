@@ -129,7 +129,7 @@ public class frmRemoverInfracao extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nomeInfra = (String) cbInfracao.getSelectedItem();
         try{
-            if(nomeInfra != null){
+            if(nomeInfra == null){
                 JOptionPane.showMessageDialog(null, "Nenhuma infração foi selecionada.", 
                         "Erro", JOptionPane.ERROR_MESSAGE);
         
