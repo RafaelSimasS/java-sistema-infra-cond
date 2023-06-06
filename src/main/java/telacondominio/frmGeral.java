@@ -17,11 +17,11 @@ import javax.swing.*;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import javax.swing.DefaultComboBoxModel;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.DefaultComboBoxModel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -62,6 +62,8 @@ public class frmGeral extends javax.swing.JFrame {
         pnFormInicio = new javax.swing.JPanel();
         lblIconBemVindo = new javax.swing.JLabel();
         lblBemVindo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         pnCadastroMorador = new javax.swing.JPanel();
         pnFormMorador = new javax.swing.JPanel();
         btnCadastrarMorador = new javax.swing.JButton();
@@ -146,6 +148,15 @@ public class frmGeral extends javax.swing.JFrame {
         lblBemVindo.setForeground(new java.awt.Color(255, 255, 255));
         lblBemVindo.setText("Bem-Vindo");
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("©2023 Copyright: Rafael Simas e");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 3, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Edilson Marques");
+
         javax.swing.GroupLayout pnFormInicioLayout = new javax.swing.GroupLayout(pnFormInicio);
         pnFormInicio.setLayout(pnFormInicioLayout);
         pnFormInicioLayout.setHorizontalGroup(
@@ -153,26 +164,36 @@ public class frmGeral extends javax.swing.JFrame {
             .addGroup(pnFormInicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblIconBemVindo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(lblBemVindo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(lblBemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         pnFormInicioLayout.setVerticalGroup(
             pnFormInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFormInicioLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(lblBemVindo))
-            .addComponent(lblIconBemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblIconBemVindo, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnFormInicioLayout.createSequentialGroup()
+                .addGap(131, 131, 131)
+                .addComponent(lblBemVindo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout pnInicioLayout = new javax.swing.GroupLayout(pnInicio);
         pnInicio.setLayout(pnInicioLayout);
         pnInicioLayout.setHorizontalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnInicioLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnInicioLayout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(pnFormInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         pnInicioLayout.setVerticalGroup(
             pnInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,6 +618,9 @@ public class frmGeral extends javax.swing.JFrame {
         lblTabelaMultas.setForeground(new java.awt.Color(255, 255, 255));
         lblTabelaMultas.setText("Tabela de Multas");
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         tbMultas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -615,36 +639,40 @@ public class frmGeral extends javax.swing.JFrame {
         pnMultaTabelaFormLayout.setHorizontalGroup(
             pnMultaTabelaFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTabelaMultas)
-                .addGap(290, 290, 290))
-            .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(pnMultaTabelaFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE))
+                    .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTabelaMultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(16, 16, 16))
         );
         pnMultaTabelaFormLayout.setVerticalGroup(
             pnMultaTabelaFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnMultaTabelaFormLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(lblTabelaMultas)
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnTabelaMultasLayout = new javax.swing.GroupLayout(pnTabelaMultas);
         pnTabelaMultas.setLayout(pnTabelaMultasLayout);
         pnTabelaMultasLayout.setHorizontalGroup(
             pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnMultaTabelaForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTabelaMultasLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(pnMultaTabelaForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(58, 58, 58))
         );
         pnTabelaMultasLayout.setVerticalGroup(
             pnTabelaMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnTabelaMultasLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(pnMultaTabelaForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pnCadastro.add(pnTabelaMultas, "card6");
@@ -1327,7 +1355,7 @@ public class frmGeral extends javax.swing.JFrame {
     private void btnRemoverMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMoradorActionPerformed
         // TODO add your handling code here:
         frmRemoveMorador frameRemoveMorador = new frmRemoveMorador();
-        frameRemoveMorador.carregaCbBoxesRemoverMorador();
+        frameRemoveMorador.carregaMoradoresNaTabela();
         frameRemoveMorador.setVisible(true);
     }//GEN-LAST:event_btnRemoverMoradorActionPerformed
 
@@ -1513,6 +1541,8 @@ public class frmGeral extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbBloco;
     private javax.swing.JComboBox<String> cbInfracao;
     private javax.swing.JComboBox<String> cbMoradores;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblApartamento;

@@ -4,14 +4,19 @@
  */
 package telacondominio;
 
-import infracao.Infracao;
-import infracao.ListaInfracoes;
 import morador.ListaMoradores;
 import morador.Morador;
 
+import javax.swing.table.TableRowSorter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import java.util.List;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -37,14 +42,10 @@ public class frmRemoveMorador extends javax.swing.JFrame {
 
         pnPrincipal = new javax.swing.JPanel();
         pnFormRemove = new javax.swing.JPanel();
-        cbBloco = new javax.swing.JComboBox<>();
-        cbApartamento = new javax.swing.JComboBox<>();
-        lblBloco = new javax.swing.JLabel();
-        lblMorador = new javax.swing.JLabel();
-        cbMoradores = new javax.swing.JComboBox<>();
-        lblApartamento = new javax.swing.JLabel();
-        btnRemoverMorador = new javax.swing.JButton();
         lblRemoverMorador = new javax.swing.JLabel();
+        btnRemoverMorador = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbMoradores = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Remover morador");
@@ -57,21 +58,9 @@ public class frmRemoveMorador extends javax.swing.JFrame {
 
         pnFormRemove.setBackground(new java.awt.Color(112, 188, 207));
 
-        cbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-
-        cbApartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
-
-        lblBloco.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblBloco.setForeground(new java.awt.Color(255, 255, 255));
-        lblBloco.setText("Bloco");
-
-        lblMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblMorador.setForeground(new java.awt.Color(255, 255, 255));
-        lblMorador.setText("Morador");
-
-        lblApartamento.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        lblApartamento.setForeground(new java.awt.Color(255, 255, 255));
-        lblApartamento.setText("Apartamento");
+        lblRemoverMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblRemoverMorador.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemoverMorador.setText("Remover Morador");
 
         btnRemoverMorador.setText("Remover");
         btnRemoverMorador.addActionListener(new java.awt.event.ActionListener() {
@@ -80,55 +69,53 @@ public class frmRemoveMorador extends javax.swing.JFrame {
             }
         });
 
-        lblRemoverMorador.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        lblRemoverMorador.setForeground(new java.awt.Color(255, 255, 255));
-        lblRemoverMorador.setText("Remover Morador");
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        tbMoradores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbMoradores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbMoradoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbMoradores);
 
         javax.swing.GroupLayout pnFormRemoveLayout = new javax.swing.GroupLayout(pnFormRemove);
         pnFormRemove.setLayout(pnFormRemoveLayout);
         pnFormRemoveLayout.setHorizontalGroup(
             pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFormRemoveLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(pnFormRemoveLayout.createSequentialGroup()
-                            .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblMorador))
-                            .addGap(18, 18, 18)
-                            .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblBloco)
-                                .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblApartamento)
-                                .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(pnFormRemoveLayout.createSequentialGroup()
-                            .addComponent(btnRemoverMorador)
-                            .addGap(26, 26, 26)))
                     .addGroup(pnFormRemoveLayout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(lblRemoverMorador)))
-                .addContainerGap())
+                        .addGap(44, 44, 44)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                        .addGap(236, 236, 236)
+                        .addComponent(lblRemoverMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnFormRemoveLayout.createSequentialGroup()
+                        .addGap(269, 269, 269)
+                        .addComponent(btnRemoverMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(46, 46, 46))
         );
         pnFormRemoveLayout.setVerticalGroup(
             pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnFormRemoveLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(lblRemoverMorador)
-                .addGap(34, 34, 34)
-                .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBloco)
-                    .addComponent(lblApartamento)
-                    .addComponent(lblMorador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnFormRemoveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbMoradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbApartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btnRemoverMorador)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRemoverMorador, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -137,16 +124,16 @@ public class frmRemoveMorador extends javax.swing.JFrame {
         pnPrincipalLayout.setHorizontalGroup(
             pnPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnPrincipalLayout.createSequentialGroup()
-                .addContainerGap(175, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(pnFormRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(180, 180, 180))
+                .addGap(26, 26, 26))
         );
         pnPrincipalLayout.setVerticalGroup(
             pnPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnPrincipalLayout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addContainerGap()
                 .addComponent(pnFormRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,46 +153,72 @@ public class frmRemoveMorador extends javax.swing.JFrame {
 
     private void btnRemoverMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverMoradorActionPerformed
         // TODO add your handling code here:
-        String nomeCpfSelecionado = (String) cbMoradores.getSelectedItem();
-        try{
-            String nome = nomeCpfSelecionado.substring(0, nomeCpfSelecionado.indexOf("("));
-            String cpf = nomeCpfSelecionado.substring(nomeCpfSelecionado.indexOf("(")+1, nomeCpfSelecionado.indexOf(")"));
-            int bloco = Integer.parseInt((String)cbBloco.getSelectedItem());
-            int apartamento = Integer.parseInt((String) cbApartamento.getSelectedItem());
-
-            int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente remover o seguinte morador?\n"
-                    + "Morador: "
-                    +nome+".\nCpf: "+cpf+"\nBloco: "+bloco+".\nApartamento: "+apartamento,
+        ListaMoradores listaMoradores = new ListaMoradores();
+        int linhaSelecionada = tbMoradores.getSelectedRow();
+        if(linhaSelecionada != -1){
+            try{
+                String nome = tbMoradores.getValueAt(linhaSelecionada, 0).toString();
+                String cpf = tbMoradores.getValueAt(linhaSelecionada, 1).toString();
+                int bloco = Integer.parseInt(tbMoradores.getValueAt(linhaSelecionada, 2).toString());
+                int numAp = Integer.parseInt(tbMoradores.getValueAt(linhaSelecionada, 3).toString());
+                int flag = JOptionPane.showConfirmDialog(null, "Deseja realmente remover o "
+                        + "seguinte morador?\nMorador: "+nome+"\nCPF: "+cpf+ "\nBloco: "+bloco+"\nApartamento: "+numAp,
                     "Confirmação",JOptionPane.YES_NO_OPTION);
                 if (flag == JOptionPane.YES_OPTION){
-                    ListaMoradores listaMoradores = new ListaMoradores();
-                    boolean foiRemovido = listaMoradores.removerMorador(nome, cpf, bloco, apartamento);
-                    if(foiRemovido){
-                        JOptionPane.showMessageDialog(null, "Morador removido!");
-                        carregaCbBoxesRemoverMorador();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Morador não foi encontrado!");
+                    boolean removido = listaMoradores.removerMorador(nome, cpf, bloco, numAp);
+                    if (removido) {
+                        // Remover a linha da tabela
+                        carregaMoradoresNaTabela();
+                        JOptionPane.showMessageDialog( null, "Morador removido com sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Falha ao remover o morador.");
                     }
-                }else{
-                    cbMoradores.requestFocus();
                 }
-        }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(null, "O campo morador está vazio.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }catch(HeadlessException | NumberFormatException e){
+                JOptionPane.showMessageDialog(null, "Erro ao remover.", 
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            } 
+        }else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para remover o morador.");
         }
     }//GEN-LAST:event_btnRemoverMoradorActionPerformed
-    public void carregaCbBoxesRemoverMorador(){
-        ListaMoradores listaMoradores = new ListaMoradores();
-        List<Morador> moradores = listaMoradores.getMoradores();
-        
-        DefaultComboBoxModel<String> comboBoxModelMoradores = new DefaultComboBoxModel<>();
-        for (Morador morador : moradores){
-            String nomeCpf = morador.getNome() +"("+morador.getCpf()+")";
-            comboBoxModelMoradores.addElement(nomeCpf); // Adiciona no cb o nome dos moradores com CPF
+
+    private void tbMoradoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMoradoresMouseClicked
+        // TODO add your handling code here:
+        if(SwingUtilities.isLeftMouseButton(evt)){
+            int row = tbMoradores.rowAtPoint(evt.getPoint());
+            tbMoradores.setRowSelectionInterval(row, row);
         }
-        cbMoradores.setModel(comboBoxModelMoradores);
-        
-    }
+    }//GEN-LAST:event_tbMoradoresMouseClicked
     
+    public void carregaMoradoresNaTabela(){
+        
+        ListaMoradores listaMoradores = new ListaMoradores();
+        // Define um coluna para a tabela
+        String[] colunas = {"Nome", "CPF", "Bloco", "Apartamento"};
+        
+        DefaultTableModel tableModel = new DefaultTableModel(colunas, 0){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        
+        List<Morador> moradores = listaMoradores.getMoradores();
+        for (Morador morador : moradores) {
+            Object[] rowData = {
+                    morador.getNome(),
+                    morador.getCpf(),
+                    morador.getBloco(),
+                    morador.getNumAp(),
+            };
+            tableModel.addRow(rowData);
+        }
+        tbMoradores.setModel(tableModel);
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+        tbMoradores.setRowSorter(sorter);
+    
+    }
     /**
      * @param args the command line arguments
      */
@@ -243,14 +256,10 @@ public class frmRemoveMorador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRemoverMorador;
-    private javax.swing.JComboBox<String> cbApartamento;
-    private javax.swing.JComboBox<String> cbBloco;
-    private javax.swing.JComboBox<String> cbMoradores;
-    private javax.swing.JLabel lblApartamento;
-    private javax.swing.JLabel lblBloco;
-    private javax.swing.JLabel lblMorador;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRemoverMorador;
     private javax.swing.JPanel pnFormRemove;
     private javax.swing.JPanel pnPrincipal;
+    private javax.swing.JTable tbMoradores;
     // End of variables declaration//GEN-END:variables
 }
